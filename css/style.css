@@ -3,6 +3,11 @@
     font-family: "Mona Sans", sans-serif;
 }
 
+body,
+html {
+    overflow-x: hidden;
+}
+
 /* Navigation Wrapper */
 .nav-wrapper {
     position: absolute;
@@ -263,10 +268,61 @@
     height: auto;
 }
 
+/* Features Section */
+#features-section {
+    background-color: #faf6ed;
+    padding-bottom: 80px;
+}
+
+.features-list {
+    display: grid !important;
+    grid-template-columns: repeat(7, 1fr);
+    /* gap: 18px; */
+    align-items: start;
+    text-align: center;
+}
+
+.feature-item {
+    padding: 12px 8px;
+    text-align: center;
+}
+
+.feature-icon {
+    width: 48px;
+    height: 48px;
+    display: block;
+    margin: 0 auto 12px;
+}
+
+.feature-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+@media (max-width: 1200px) {
+    .features-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .features-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .features-list {
+        grid-template-columns: 1fr;
+    }
+}
+
 /* Attractions Section */
 #attractions-section {
     background-color: #faf6ed;
-    padding: 80px 0 150px;
+    padding: 80px 0 50px;
 }
 
 .section-top-icon {
