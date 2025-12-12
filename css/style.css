@@ -268,6 +268,66 @@ html {
     height: auto;
 }
 
+/* Fishing Feature Section */
+#fishing-feature-section {
+    padding: 80px 0 120px;
+    background-color: #faf6ed;
+}
+
+.feature-header-title {
+    font-size: 48px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.feature-header-subtitle {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 28px;
+}
+
+.image-card {
+    position: relative;
+    overflow: hidden;
+}
+
+.image-card {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0 30px 0 30px;
+}
+
+.award-card {
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
+    /* background: rgba(0,0,0,0.2); */
+    color: #fff;
+    padding: 20px;
+    border-radius: 0 30px 0 30px; /* top-left, top-right, bottom-right, bottom-left */
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    border: 2px solid rgba(255,255,255,0.9);
+}
+
+.award-icon {
+    width: 24px !important;
+    border-radius: unset !important;
+}
+
+.award-text {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+}
+
 /* Features Section */
 #features-section {
     background-color: #faf6ed;
@@ -326,8 +386,8 @@ html {
 }
 
 .section-top-icon {
-    width: 60px;
-    height: 60px;
+    width: 42px;
+    height: 42px;
     margin-bottom: 30px;
 }
 
@@ -494,6 +554,20 @@ html {
 }
 
 .btn-discover i {
+    margin-left: 8px;
+}
+
+/* More button under fishing card */
+.btn-more {
+    margin-top: 24px;
+    background-color: #F48600;
+    border-color: #F48600;
+}
+
+.btn-more img.btn-plus {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
     margin-left: 8px;
 }
 
