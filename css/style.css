@@ -534,6 +534,194 @@ html {
     }
 }
 
+/* FAQ / Q&A Section */
+#faq-section {
+    background-color: #ffffff;
+    padding: 60px 0 80px;
+}
+
+.faq-icon {
+    width: 36px;
+    height: 36px;
+}
+
+.faq-heading {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.faq-body {
+    margin-top: 12px;
+}
+
+.faq-body ol {
+    padding-left: 20px;
+    margin: 0;
+}
+
+.faq-body li {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 8px;
+}
+
+.faq-image {
+    max-width: 100%;
+    height: auto;
+}
+
+@media (max-width: 768px) {
+    .faq-heading {
+        font-size: 24px;
+    }
+    .faq-body li {
+        font-size: 16px;
+    }
+}
+
+/* Footer styles */
+#site-footer {
+    background-color: #ffffff;
+    padding: 0px 0 40px;
+}
+
+.footer-logo {
+    width: 140px;
+    height: auto;
+}
+
+.footer-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 4px 0;
+    text-decoration: underline;
+}
+
+.footer-subtitle {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.contact-row {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-icon-box {
+    width: 42px;
+    height: 42px;
+    background: #f2efe8;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon-img {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.contact-text {
+    font-size: 18px;
+    font-weight: 700;
+    color: #000;
+}
+
+.footer-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-nav ul li {
+    margin-bottom: 6px;
+}
+
+.footer-nav ul li a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.footer-pdfs ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-pdfs li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+}
+
+.footer-pdfs li a {
+    color: #000;
+    font-weight: 400;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.pdf-icon {
+    width: 20px;
+    height: auto;
+    flex-shrink: 0;
+    margin-left: 8px;
+}
+
+.footer-frame {
+    max-width: 100%;
+    border-radius: 12px;
+}
+
+.footer-bottom {
+    padding-top: 18px;
+    /* border-top: 1px solid rgba(0,0,0,0.08); */
+}
+
+.footer-copyright {
+    font-size: 12px;
+    color: #000;
+    display: flex;
+    align-items: center;
+}
+
+.footer-legal {
+    font-size: 10px;
+    color: #666;
+    line-height: 1.5;
+}
+
+.sugarfree {
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .footer-frame {
+        max-width: 260px;
+    }
+}
+
 @media (max-width: 1200px) {
     .features-list {
         grid-template-columns: repeat(4, 1fr);
