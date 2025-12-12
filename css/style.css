@@ -361,6 +361,53 @@ html {
     margin: 0;
 }
 
+/* Maps / Directions Section */
+#maps-section {
+    background-color: #faf6ed;
+    padding: 0 0 120px;
+}
+
+.maps-intro {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    max-width: 860px;
+    margin: 12px auto 0;
+}
+
+.map-card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    margin-bottom: 20px;
+}
+
+.map-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+.map-details {
+    padding: 20px;
+}
+
+.map-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000;
+    margin: 0 0 8px;
+}
+
+.map-body {
+    font-size: 18px;
+    font-weight: 400;
+    color: #000;
+    margin: 0;
+}
+
 @media (max-width: 1200px) {
     .features-list {
         grid-template-columns: repeat(4, 1fr);
