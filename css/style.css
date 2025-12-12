@@ -1,0 +1,89 @@
+/* Custom styles go here */
+* {
+    font-family: "Mona Sans", sans-serif;
+}
+
+/* Navigation Wrapper */
+.nav-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent);
+    z-index: 1000;
+}
+
+/* Top Navigation */
+#top-nav {
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#top-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+#top-nav a:hover {
+    opacity: 0.8;
+}
+
+#top-nav i {
+    margin-right: 4px;
+}
+
+#top-nav .top-nav-left a,
+#top-nav .top-nav-right a {
+    margin-right: 16px;
+}
+
+#top-nav .top-nav-left a:last-child,
+#top-nav .top-nav-right a:last-child {
+    margin-right: 0;
+}
+
+/* Main Navigation */
+#main-nav {
+    padding: 10px 0;
+    position: relative;
+}
+
+#main-nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 15px;
+}
+
+#main-nav a:hover {
+    opacity: 0.8;
+}
+
+#main-nav .home-icon,
+#main-nav .accessibility-icon {
+    margin: 0 10px;
+}
+
+#main-nav .main-nav-center {
+    position: absolute;
+    left: 50%;
+    top: -25px;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+#main-nav .logo {
+    height: 112px;
+    width: 112px;
+}
+
+/* Hero Banner */
+#hero {
+    height: 100vh;
+    background-image: url('../img/banner.png');
+    background-size: cover;
+    background-position: center;
+}
