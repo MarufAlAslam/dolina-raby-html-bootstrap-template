@@ -13,8 +13,12 @@
     z-index: 1000;
 }
 
-.custom-nav-container {
+.custom-container {
     padding: 0 40px;
+}
+.custom-container-2 {
+    padding: 0 60px;
+    max-width: 100% !important;
 }
 
 /* Top Navigation */
@@ -125,9 +129,18 @@
     transform-origin: bottom right;
 }
 
+#hero-bg.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
 /* Hero Banner */
 #hero {
-    height: 100vh;
+    height: 300vh;
+    position: relative;
+}
+
+#hero.scroll-complete {
     position: relative;
 }
 
@@ -152,6 +165,11 @@
     transform: translateY(0);
 }
 
+.infrastructure-content.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
 /* Umbrella Content */
 .umbrella-content {
     position: fixed;
@@ -171,6 +189,40 @@
 .umbrella-content.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+.umbrella-content.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
+.infrastructure-content.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
+.umbrella-content.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
+.infrastructure-content.scroll-complete {
+    position: absolute;
+    top: 0;
+}
+
+/* Fishing Section */
+#fishing-section {
+    min-height: 100vh;
+    background-image: url('../img/bg-2.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    padding: 80px 0;
+    position: relative;
+    z-index: 9999;
 }
 
 .info-card {
