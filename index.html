@@ -19,65 +19,79 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/logo.png">
 </head>
 
 <body>
-
-    <body>
-        <!-- Hero Banner Section -->
-        <section id="hero" class="d-flex align-items-center justify-content-center">
-            <!-- Navigation Wrapper -->
-            <div class="nav-wrapper">
-                <!-- Top Navigation Bar -->
-                <nav id="top-nav">
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="top-nav-left">
-                                <a href="#"><i class="fa-regular fa-heart"></i></a>
-                                <a href="#">Facebook</a>
-                                <a href="#">Instagram</a>
-                            </div>
-                            <div class="top-nav-right">
-                                <a href="tel:+48789230680" class="me-3"><i class="fa-solid fa-phone"></i> +48 789 230 680</a>
-                                <a href="mailto:doraby@swedocispalika.pl">doraby@swedocispalika.pl</a>
-                            </div>
+    <!-- Hero Banner Section -->
+    <section id="hero" class="d-flex align-items-center justify-content-center">
+        <!-- Navigation Wrapper -->
+        <div class="nav-wrapper">
+            <!-- Top Navigation Bar -->
+            <nav id="top-nav">
+                <div class="custom-nav-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="top-nav-left">
+                            <a href="#"><i class="fa-regular fa-heart"></i></a>
+                            <a href="#">Facebook</a>
+                            <a href="#">Instagram</a>
+                        </div>
+                        <div class="top-nav-right">
+                            <a href="tel:+48789230680" class="me-3"><i class="fa-solid fa-phone"></i> +48 789 230
+                                680</a>
+                            <a href="mailto:doraby@swedocispalika.pl">doraby@swedocispalika.pl</a>
                         </div>
                     </div>
-                </nav>
+                </div>
+            </nav>
 
-                <!-- Main Navigation Bar -->
-                <nav id="main-nav">
-                    <div class="container-fluid">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="main-nav-left d-flex align-items-center">
-                                <a href="#" class="home-icon"><img src="img/home.png" alt="Home" width="42" height="42"></a>
-                                <a href="#">O nas</a>
-                                <a href="#">Dlaczego Dolina Raby?</a>
-                                <a href="#">Atrakcje</a>
-                            </div>
-                            <div class="main-nav-center">
-                                <img src="img/logo.png" alt="Logo" class="logo">
-                            </div>
-                            <div class="main-nav-right d-flex align-items-center">
-                                <a href="#">Wędkowanie Dolina</a>
-                                <a href="#">Pytania i odpowiedzi</a>
-                                <a href="#">Dojazd</a>
-                                <a href="#" class="accessibility-icon"><img src="img/accessibility.png" alt="Accessibility"
-                                        width="42" height="42"></a>
-                            </div>
+            <!-- Main Navigation Bar -->
+            <nav id="main-nav">
+                <div class="custom-nav-container">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div class="main-nav-left d-flex align-items-center">
+                            <a href="#" class="home-icon ms-0"><img src="img/home.png" alt="Home" width="42" height="42"></a>
+                            <a href="#">O nas</a>
+                            <a href="#">Dlaczego Dolina Raby?</a>
+                            <a href="#">Atrakcje</a>
+                        </div>
+                        <div class="main-nav-center">
+                            <img src="img/logo.png" alt="Logo" class="logo">
+                        </div>
+                        <div class="main-nav-right d-flex align-items-center">
+                            <a href="#">Wędkowanie Dolina</a>
+                            <a href="#">Pytania i odpowiedzi</a>
+                            <a href="#">Dojazd</a>
+                            <a href="#" class="accessibility-icon me-0"><img src="img/accessibility.png" alt="Accessibility"
+                                    width="42" height="42"></a>
                         </div>
                     </div>
-                </nav>
-            </div>
-        </section>
+                </div>
+            </nav>
+        </div>
 
-        <!-- Bootstrap 5 JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-            crossorigin="anonymous"></script>
-        <!-- Custom JS -->
-        <script src="js/script.js"></script>
-    </body>
+        <!-- Hero Content -->
+        <div class="hero-content">
+            <h1>Dolina Raby</h1>
+            <img src="img/banner-cursive.png" alt="Ostoła natury" class="cursive-text">
+            <a href="#" class="btn btn-primary btn-discover">Odkrywaj Dolinę Raby <img src="img/down-arrow.png" class="down-arrow img-fluid ms-3" alt="Arrow"></a>
+        </div>
+
+        <!-- Bottom Left Info -->
+        <div class="hero-bottom-left">
+            <img src="img/sun.png" alt="Sun" width="24" height="24">
+            <span>Data: 12.06</span>
+            <span>26°C słonecznie</span>
+        </div>
+
+        <!-- Bottom Right Card -->
+        <div class="hero-bottom-right">
+            <img src="img/velo.png" alt="Velo Małopolska" class="velo-logo w-full mb-5">
+            <p class="mb-0">Rowerem <br>
+do Raby</p>
+        </div>
+    </section>
 
     <!-- Bootstrap 5 JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
