@@ -408,6 +408,132 @@ html {
     margin: 0;
 }
 
+/* Fullscreen Image Section */
+#fullscreen-section {
+    background-image: url('../img/fullscreen.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: 120px 0;
+    position: relative;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* #fullscreen-section::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.28);
+    pointer-events: none;
+} */
+
+.fullscreen-content {
+    position: relative;
+    z-index: 2;
+}
+
+.fullscreen-icon {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+}
+
+.fullscreen-heading {
+    font-size: 66px;
+    font-weight: 700;
+    color: #fff;
+    margin: 12px 0 8px;
+    line-height: 1.05;
+}
+
+.fullscreen-cursive {
+    display: block;
+    max-width: 720px;
+    width: 80%;
+    height: auto;
+    margin: 12px auto 0;
+}
+
+/* Facebook Posts Section */
+#facebook-section {
+    background-color: #ffffff;
+    padding: 120px 0 80px;
+}
+
+.fb-icon {
+    width: 36px;
+    height: 36px;
+    display: inline-block;
+}
+
+.fb-heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: #000;
+    margin: 0;
+}
+
+.fb-grid {
+    display: flex;
+    gap: 18px;
+}
+
+.fb-card {
+    background: #fff;
+    border-radius: 12px;
+    /* box-shadow: 0 8px 24px rgba(0,0,0,0.06); */
+    overflow: hidden;
+}
+
+.fb-post-img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.btn-fb {
+    background-color: #1D75E0;
+    color: #fff;
+    border: none;
+    padding: 14px 28px;
+    font-weight: 700;
+    border-radius: 10px 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-f-img {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+}
+
+@media (max-width: 768px) {
+    .fb-grid {
+        flex-wrap: wrap;
+    }
+    .fb-grid .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (max-width: 480px) {
+    .fb-grid .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
 @media (max-width: 1200px) {
     .features-list {
         grid-template-columns: repeat(4, 1fr);
