@@ -263,6 +263,95 @@
     height: auto;
 }
 
+/* Attractions Section */
+#attractions-section {
+    background-color: #faf6ed;
+    padding: 80px 0 150px;
+}
+
+.section-top-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 30px;
+}
+
+.attractions-grid {
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+
+.attraction-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 280px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.attraction-item:hover {
+    transform: scale(1.02);
+}
+
+.attraction-item-tall {
+    height: 580px;
+}
+
+.attraction-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.attraction-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.overlay-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.overlay-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 8px;
+    line-height: 1.2;
+}
+
+.overlay-text {
+    font-size: 16px;
+    font-weight: 400;
+    color: white;
+    margin: 0;
+}
+
+.attractions-note {
+    font-size: 24px;
+    font-weight: 400;
+    color: #000;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.pomozemy-image {
+    max-width: 300px;
+    height: auto;
+    display: inline-block;
+}
+
 .info-card {
     background-color: white;
     padding: 40px;
