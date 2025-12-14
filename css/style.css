@@ -524,24 +524,6 @@ html {
     display: inline-block;
 }
 
-@media (max-width: 768px) {
-    .fb-grid {
-        flex-wrap: wrap;
-    }
-
-    .fb-grid .col-md-3 {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-}
-
-@media (max-width: 480px) {
-    .fb-grid .col-md-3 {
-        flex: 0 0 100%;
-        max-width: 100%;
-    }
-}
-
 /* FAQ / Q&A Section */
 #faq-section {
     background-color: #ffffff;
@@ -581,15 +563,7 @@ html {
     height: auto;
 }
 
-@media (max-width: 768px) {
-    .faq-heading {
-        font-size: 24px;
-    }
 
-    .faq-body li {
-        font-size: 16px;
-    }
-}
 
 /* Footer styles */
 #site-footer {
@@ -723,58 +697,6 @@ html {
     height: 24px;
     display: inline-block;
     vertical-align: middle;
-}
-
-@media (max-width: 768px) {
-    .footer-frame {
-        max-width: 260px;
-    }
-}
-
-@media (max-width: 1368px) {
-    #main-nav a {
-        font-size: 16px;
-        margin: 0 12px;
-    }
-
-    #top-nav a {
-        font-size: 11px;
-    }
-
-    #main-nav .logo {
-        height: 96px;
-        width: 96px;
-    }
-
-    #main-nav .main-nav-center {
-        top: -20px;
-    }
-
-    .hero-content h1 {
-        font-size: 96px;
-    }
-
-    .section-headline {
-        font-size: 38px;
-    }
-}
-
-@media (max-width: 1200px) {
-    .features-list {
-        grid-template-columns: repeat(4, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .features-list {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 480px) {
-    .features-list {
-        grid-template-columns: 1fr;
-    }
 }
 
 /* Attractions Section */
@@ -1017,4 +939,104 @@ html {
 
 .down-arrow {
     margin-top: -2px;
+}
+
+@media (max-width: 1368px) {
+    #main-nav a {
+        font-size: 16px;
+        margin: 0 12px;
+    }
+
+    #top-nav a {
+        font-size: 11px;
+    }
+
+    #main-nav .logo {
+        height: 96px;
+        width: 96px;
+    }
+
+    #main-nav .main-nav-center {
+        top: -20px;
+    }
+
+    .hero-content h1 {
+        font-size: 96px;
+    }
+
+    .section-headline {
+        font-size: 38px;
+    }
+}
+
+@media (max-width: 1200px) {
+    #main-nav a {
+        font-size: 14px;
+        margin: 0 8px;
+    }
+
+    #main-nav .logo {
+        height: 80px;
+        width: 80px;
+    }
+
+    #main-nav .main-nav-center {
+        top: -18px;
+    }
+
+    #main-nav .home-icon img,
+    #main-nav .accessibility-icon img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .hero-content h1 {
+        font-size: 80px;
+    }
+
+    .section-headline {
+        font-size: 36px;
+    }
+
+    .features-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .features-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fb-grid {
+        flex-wrap: wrap;
+    }
+
+    .fb-grid .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .faq-heading {
+        font-size: 24px;
+    }
+
+    .faq-body li {
+        font-size: 16px;
+    }
+
+    .footer-frame {
+        max-width: 260px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fb-grid .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    .features-list {
+        grid-template-columns: 1fr;
+    }
 }
