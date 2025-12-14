@@ -1,5 +1,31 @@
 // Custom JavaScript goes here
 
+// Hamburger Menu Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburgerMenu = document.getElementById('hamburgerMenu');
+    const mobileNavWrapper = document.querySelector('.mobile-nav-wrapper');
+
+    if (hamburgerMenu && mobileNavWrapper) {
+        hamburgerMenu.addEventListener('click', function() {
+            this.classList.toggle('active');
+            mobileNavWrapper.classList.toggle('active');
+            
+            // Prevent body scroll when menu is open
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+        });
+
+        // Close menu when clicking on a link
+        const menuLinks = mobileNavWrapper.querySelectorAll('a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                mobileNavWrapper.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+    }
+});
+
 // Smooth background transition on scroll with stages
 window.addEventListener('scroll', function() {
     const heroBg = document.getElementById('hero-bg');
