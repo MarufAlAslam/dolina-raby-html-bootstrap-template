@@ -27,6 +27,12 @@ html {
     max-width: 100% !important;
 }
 
+.sections .custom-container,
+.sections .custom-container-2 {
+    max-width: 1400px !important;
+    margin: auto;
+}
+
 /* Top Navigation */
 #top-nav {
     padding: 8px 0;
@@ -307,13 +313,14 @@ html {
     /* background: rgba(0,0,0,0.2); */
     color: #fff;
     padding: 20px;
-    border-radius: 0 30px 0 30px; /* top-left, top-right, bottom-right, bottom-left */
+    border-radius: 0 30px 0 30px;
+    /* top-left, top-right, bottom-right, bottom-left */
     max-width: 320px;
     display: flex;
     flex-direction: column;
     gap: 12px;
     align-items: flex-start;
-    border: 2px solid rgba(255,255,255,0.9);
+    border: 2px solid rgba(255, 255, 255, 0.9);
 }
 
 .award-icon {
@@ -379,7 +386,7 @@ html {
     background: #fff;
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     margin-bottom: 20px;
 }
 
@@ -521,6 +528,7 @@ html {
     .fb-grid {
         flex-wrap: wrap;
     }
+
     .fb-grid .col-md-3 {
         flex: 0 0 50%;
         max-width: 50%;
@@ -577,6 +585,7 @@ html {
     .faq-heading {
         font-size: 24px;
     }
+
     .faq-body li {
         font-size: 16px;
     }
