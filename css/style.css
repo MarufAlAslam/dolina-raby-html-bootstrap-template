@@ -731,6 +731,34 @@ html {
     }
 }
 
+@media (max-width: 1368px) {
+    #main-nav a {
+        font-size: 16px;
+        margin: 0 12px;
+    }
+
+    #top-nav a {
+        font-size: 11px;
+    }
+
+    #main-nav .logo {
+        height: 96px;
+        width: 96px;
+    }
+
+    #main-nav .main-nav-center {
+        top: -20px;
+    }
+
+    .hero-content h1 {
+        font-size: 96px;
+    }
+
+    .section-headline {
+        font-size: 38px;
+    }
+}
+
 @media (max-width: 1200px) {
     .features-list {
         grid-template-columns: repeat(4, 1fr);
