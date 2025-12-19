@@ -419,6 +419,10 @@ html {
     padding: 120px 0 120px 0;
 }
 
+.infrastructure-content.visible {
+    z-index: 999999999999999999;
+}
+
 .maps-intro {
     font-size: 18px;
     font-weight: 400;
@@ -742,6 +746,7 @@ div#modalRowery {
     text-decoration: none;
     font-weight: 800;
 }
+
 .attraction-phone-number a:hover,
 .attraction-phone-number a:focus {
     color: #111;
