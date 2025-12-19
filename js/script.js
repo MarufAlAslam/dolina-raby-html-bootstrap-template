@@ -153,11 +153,21 @@ window.addEventListener('scroll', function() {
 // Nav: trigger hero Stage 3 when clicking 'O nas'
 document.addEventListener('DOMContentLoaded', function() {
     const navOnas = document.getElementById('navOnas');
-    if (!navOnas) return;
+    if (navOnas) {
+        navOnas.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = window.innerHeight * 1.1; // inside stage 3 (between 1.0 and 1.5 * windowHeight)
+            window.scrollTo({ top: target, behavior: 'smooth' });
+        });
+    }
 
-    navOnas.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = window.innerHeight * 1.1; // inside stage 3 (between 1.0 and 1.5 * windowHeight)
-        window.scrollTo({ top: target, behavior: 'smooth' });
-    });
+    // Hero green CTA should open hero Stage 3 as well
+    const heroCta = document.querySelector('.hero-content .btn-discover');
+    if (heroCta) {
+        heroCta.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = window.innerHeight * 1.1;
+            window.scrollTo({ top: target, behavior: 'smooth' });
+        });
+    }
 });

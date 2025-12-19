@@ -1160,6 +1160,10 @@ div#modalRowery {
     cursor: pointer;
 }
 
+.hero-content {
+    z-index: 909999999999999999999;
+}
+
 .attraction-item:hover {
     /* keep the card size stable on hover; only the image inside will scale */
     transform: none;
@@ -1174,7 +1178,7 @@ div#modalRowery {
     height: 100%;
     object-fit: cover;
     display: block;
-    transition: transform 0.6s cubic-bezier(0.2,0.8,0.2,1);
+    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
     will-change: transform;
 }
 
