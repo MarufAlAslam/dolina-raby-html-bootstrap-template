@@ -266,6 +266,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Also bind same behavior to any link with `.scroll-stage-3` (e.g., footer link)
+    const stage3Links = document.querySelectorAll('.scroll-stage-3');
+    if (stage3Links && stage3Links.length) {
+        stage3Links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = window.innerHeight * 1.1;
+                window.scrollTo({ top: target, behavior: 'smooth' });
+            });
+        });
+    }
+
     // Hero green CTA should open hero Stage 3 as well
     const heroCta = document.querySelector('.hero-content .btn-discover');
     if (heroCta) {
