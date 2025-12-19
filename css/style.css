@@ -9,6 +9,17 @@ html {
     padding-right: 0 !important;
 }
 
+/* Global text selection highlight */
+::selection {
+    background: #54d325;
+    color: #ffffff;
+}
+
+::-moz-selection {
+    background: #54d325;
+    color: #ffffff;
+}
+
 /* Navigation Wrapper */
 .nav-wrapper {
     position: absolute;
