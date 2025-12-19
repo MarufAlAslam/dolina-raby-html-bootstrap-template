@@ -5,6 +5,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNavWrapper = document.querySelector('.mobile-nav-wrapper');
 
+    // Create floating burger button (hidden by default) that scrolls to top
+    if (!document.getElementById('floatingBurger')) {
+        const fb = document.createElement('button');
+        fb.id = 'floatingBurger';
+        fb.type = 'button';
+        fb.setAttribute('aria-label', 'Scroll to top');
+        fb.innerHTML = '<span></span><span></span><span></span>';
+        document.body.appendChild(fb);
+        fb.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
     if (hamburgerMenu && mobileNavWrapper) {
         hamburgerMenu.addEventListener('click', function() {
             this.classList.toggle('active');
@@ -38,6 +51,20 @@ window.addEventListener('scroll', function() {
 
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
+
+    // Show floating burger when nav is out of view
+    try {
+        const navWrap = document.querySelector('.nav-wrapper');
+        const fbBtn = document.getElementById('floatingBurger');
+        if (navWrap && fbBtn) {
+            const navRect = navWrap.getBoundingClientRect();
+            // if nav bottom is above the viewport, show button
+            if (navRect.bottom <= 0) fbBtn.style.display = 'flex';
+            else fbBtn.style.display = 'none';
+        }
+    } catch (e) {
+        // ignore
+    }
 
     // Stage boundaries (same as original)
     const stage1End = windowHeight * 0.5;   // hero move out

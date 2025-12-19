@@ -148,6 +148,42 @@ html {
     transform: rotate(-45deg) translate(7px, -7px);
 }
 
+/* Floating burger shown when nav is out of view */
+#floatingBurger {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    width: 48px;
+    height: 48px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px 0;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    z-index: 2000;
+    border: none;
+    cursor: pointer;
+    flex-direction: column;
+}
+
+#floatingBurger span {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: #111;
+    border-radius: 2px;
+    transition: all 0.25s ease;
+}
+
+#floatingBurger span+span {
+    margin-top: 5px;
+}
+
+#floatingBurger:active {
+    transform: scale(0.98);
+}
+
 .mobile-nav-wrapper {
     display: contents;
 }
@@ -1287,6 +1323,10 @@ div#modalRowery {
     color: #000;
     margin-bottom: 20px;
     line-height: 1.3;
+}
+
+button#floatingBurger {
+    z-index: 999999999999999999999999;
 }
 
 .link-underline {
