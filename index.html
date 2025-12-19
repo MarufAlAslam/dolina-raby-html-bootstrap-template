@@ -329,8 +329,26 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center mt-4">
-                                <a href="#" class="btn btn-discover btn-more">Więcej o naszych łowiskach <img
-                                        src="img/plus.png" alt="plus" class="btn-plus"></a>
+                                <button type="button" class="btn btn-discover btn-more" data-bs-toggle="modal" data-bs-target="#fishingModal">Więcej o naszych łowiskach <img
+                                        src="img/plus.png" alt="plus" class="btn-plus"></button>
+                            </div>
+
+                            <!-- Fishing details modal -->
+                            <div class="modal fade fishing-modal" id="fishingModal" tabindex="-1" aria-labelledby="fishingModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-xl modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-body p-0 position-relative">
+                                            <button type="button" class="modal-close-square" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                                            <img src="img/poup-22.png" alt="Wędkowanie Dolina" class="modal-hero-img">
+                                            <div class="p-4 p-md-5">
+                                                <h2 id="fishingModalLabel">Wędkowanie Dolina</h2>
+                                                <p class="lead">Dolina Raby oferuje możliwość wędkowania — głębokości sięgające 7 metrów zapewniają doskonałe warunki do rozwoju okazów. Łowisko jest bardzo różnorodne — od przygotowanych jednoosobowych pomostów po dzikie stanowiska w szuwarach.</p>
+                                                <p>W wodzie możesz spotkać: karpie w różnych odmianach, okazy powyżej 20 kg, sandacze, suma, szczupaka oraz wiele innych gatunków. Oferujemy miejsca do parkowania przy stanowiskach i wygodne dojścia z parkingu.</p>
+                                                <p class="mb-0">Jeśli chcesz, mogę dodać mapę dojazdu i dokładne współrzędne na Google Maps.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
