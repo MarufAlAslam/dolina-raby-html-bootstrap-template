@@ -19,6 +19,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- AOS Animate On Scroll CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="img/logo.svg">
 </head>
@@ -102,21 +104,21 @@
 
         <!-- Hero Content -->
         <div class="hero-content w-100">
-            <h1>Dolina Raby</h1>
-            <img src="img/banner-cursive.png" alt="Ostoła natury" class="cursive-text">
-            <a href="#" class="btn btn-primary btn-discover">Odkrywaj Dolinę Raby <img src="img/down-arrow.png"
-                    class="down-arrow img-fluid ms-3" alt="Arrow"></a>
+            <h1 data-aos="fade-down" data-aos-duration="900">Dolina Raby</h1>
+            <img src="img/banner-cursive.png" alt="Ostoła natury" class="cursive-text" data-aos="fade-up" data-aos-duration="900" data-aos-delay="150">
+            <a href="#" class="btn btn-primary btn-discover" data-aos="fade-up" data-aos-duration="900" data-aos-delay="300">Odkrywaj Dolinę Raby <img src="img/down-arrow.png"
+                class="down-arrow img-fluid ms-3" alt="Arrow"></a>
         </div>
 
         <!-- Bottom Left Info -->
-        <div class="hero-bottom-left">
+        <div class="hero-bottom-left" data-aos="fade-right" data-aos-duration="900" data-aos-delay="100">
             <img src="img/sun.png" alt="Sun" width="24" height="24">
             <span>Data: 12.06</span>
             <span>26°C słonecznie</span>
         </div>
 
         <!-- Bottom Right Card -->
-        <div class="hero-bottom-right">
+        <div class="hero-bottom-right" data-aos="fade-left" data-aos-duration="900" data-aos-delay="100">
             <img src="img/velo.png" alt="Velo Małopolska" class="velo-logo w-full mb-5">
             <p class="mb-0">Rowerem <br>
                 do Raby</p>
@@ -127,7 +129,7 @@
             <div class="container custom-container-2">
                 <div class="row">
                     <div class="col-xl-4 col-lg-6">
-                        <div class="info-card">
+                            <div class="info-card" data-aos="zoom-in" data-aos-duration="800">
                             <div class="bg-transparent mb-4">
                                 <img src="img/inf-icon.png" alt="Icon" width="42" height="42">
                             </div>
@@ -178,7 +180,7 @@
         <!-- About Section -->
         <section id="about-section">
             <div class="container">
-                <div class="row">
+                <div class="row" data-aos="fade-up">
                     <div class="col-12">
                         <h2 class="section-headline text-center mb-5">
                             Dolina Raby to Miejsce, gdzie
@@ -198,7 +200,7 @@
 
         <!-- Attractions Section -->
         <section id="attractions-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <div class="row">
                     <div class="col-12 text-center">
                         <img src="img/inf-icon.png" alt="Icon" class="section-top-icon">
@@ -273,7 +275,7 @@
 
         <!-- Features Section -->
         <section id="features-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <div class="features-list">
                     <div class="feature-item">
                         <img src="img/icon-1.png" alt="" class="feature-icon">
@@ -309,7 +311,7 @@
 
         <!-- Fishing Feature Section -->
         <section id="fishing-feature-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <div class="row justify-content-center text-center mb-4">
                     <div class="col-12">
                         <img src="img/fish-icon.png" alt="Icon" class="section-top-icon">
@@ -369,7 +371,7 @@
 
         <!-- Maps / Directions Section -->
         <section id="maps-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <div class="row">
                     <div class="col-12 text-center">
                         <img src="img/location.png" alt="Location" class="section-top-icon">
@@ -429,7 +431,7 @@
 
         <!-- Fullscreen Image Section -->
         <section id="fullscreen-section">
-            <div class="container">
+            <div class="container" data-aos="fade-up">
                 <div class="row">
                     <div class="col-12 text-center">
                         <img src="img/sun.png" alt="Sun" class="fullscreen-icon mb-3">
@@ -443,7 +445,7 @@
 
         <!-- Facebook Posts Section -->
         <section id="facebook-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <div class="row align-items-center mb-4">
                     <div class="col-auto">
                         <img src="img/fb.png" alt="Facebook" class="fb-icon">
@@ -489,7 +491,7 @@
 
         <!-- FAQ / Q&A Section -->
         <section id="faq-section">
-            <div class="container custom-container-2">
+            <div class="container custom-container-2" data-aos="fade-up">
                 <hr> <br> <br> <br> <br>
                 <div class="row align-items-center">
                     <div class="col-lg-6">
@@ -1025,6 +1027,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+    <!-- AOS Animate On Scroll JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <!-- Custom JS -->
     <script src="js/script.js"></script>
 </body>

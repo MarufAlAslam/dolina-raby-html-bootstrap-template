@@ -171,3 +171,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Initialize AOS if available
+document.addEventListener('DOMContentLoaded', function() {
+    if (window.AOS && typeof AOS.init === 'function') {
+        AOS.init({
+            once: true,
+            duration: 800,
+            easing: 'ease-out-cubic',
+            offset: 120
+        });
+    }
+});
+
+// Also initialize/refresh AOS on full window load to ensure assets are ready
+window.addEventListener('load', function() {
+    if (window.AOS && typeof AOS.init === 'function') {
+        try {
+            AOS.init({
+                once: true,
+                duration: 800,
+                easing: 'ease-out-cubic',
+                offset: 120
+            });
+            if (typeof AOS.refreshHard === 'function') AOS.refreshHard();
+            else if (typeof AOS.refresh === 'function') AOS.refresh();
+        } catch (err) {
+            // eslint-disable-next-line no-console
+            console.warn('AOS init failed:', err);
+        }
+    } else {
+        // eslint-disable-next-line no-console
+        console.info('AOS not found on window - check script include.');
+    }
+});
