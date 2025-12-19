@@ -416,7 +416,7 @@ html {
 /* Maps / Directions Section */
 #maps-section {
     background-color: #faf6ed;
-    padding: 0 0 120px;
+    padding: 120px 0 120px 0;
 }
 
 .maps-intro {
