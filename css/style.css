@@ -6,6 +6,7 @@
 body,
 html {
     overflow-x: hidden;
+    padding-right: 0 !important;
 }
 
 /* Navigation Wrapper */
@@ -504,6 +505,16 @@ div#fishingModal {
     backdrop-filter: blur(10px);
 }
 
+div#modalParkLinowy,
+div#modalGastronomia,
+div#modalSauna,
+div#modalSprzet,
+div#modalRowery {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 9999999999999999;
+}
+
 @media (max-width: 991px) {
     .map-overlay {
         left: 12px;
@@ -538,7 +549,7 @@ div#fishingModal {
 
 .fishing-modal .modal-hero-img {
     width: 100%;
-    height: 340px;
+    height: 380px;
     object-fit: cover;
     display: block;
 }
@@ -557,20 +568,21 @@ div#fishingModal {
 
 .modal-close-square {
     position: absolute;
-    top: 16px;
-    right: 16px;
-    width: 44px;
-    height: 44px;
+    top: 18px;
+    right: 24px;
+    width: 48px;
+    height: 48px;
     border: none;
-    background: #f39c12;
-    color: #fff;
-    font-size: 22px;
+    background: #fff;
+    color: #111;
+    font-size: 28px;
     line-height: 1;
-    border-radius: 6px;
+    border-radius: 8px;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    z-index: 1060;
 }
 
 @media (max-width: 767px) {
@@ -592,6 +604,200 @@ div#fishingModal {
     z-index: 1051;
     /* ensure modal content is above the backdrop and close square sits visually on top */
 }
+
+/* Modal inner white panel that overlaps the hero image */
+.modal-inner {
+    background: #fff;
+    border-radius: 20px;
+    margin: -64px 40px 28px;
+    /* pull up to overlap hero */
+    position: relative;
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.10);
+    padding: 36px 48px;
+    overflow: visible;
+}
+
+/* Specific overrides for attraction modal (higher specificity to beat Bootstrap) */
+
+.attraction-modal .modal-hero-img {
+    height: 320px;
+    object-fit: cover;
+    object-position: center 30%;
+    border-radius: 0;
+}
+
+.attraction-modal .modal-inner {
+    margin: -60px 40px 28px;
+    padding: 40px 48px 32px 48px;
+    border-radius: 20px !important;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+    position: relative;
+    background: #fff;
+}
+
+.attraction-modal h2 {
+    font-size: 30px;
+    font-weight: 800;
+    margin-bottom: 18px;
+    margin-top: 0;
+    line-height: 1.08;
+}
+
+.attraction-modal .lead {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 18px;
+    color: #222;
+    line-height: 1.32;
+}
+
+.attraction-modal .modal-body {
+    padding: 0;
+}
+
+.attraction-modal .modal-content {
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.attraction-modal .modal-close-square {
+    top: 24px;
+    right: 32px;
+    width: 48px;
+    height: 48px;
+    background: #fff;
+    color: #1bbf28;
+    font-size: 32px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+    border: none;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attraction-modal-badge {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    background: #1bbf28;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 40px;
+    top: -28px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+}
+
+.attraction-modal-badge img {
+    width: 60%;
+    height: auto;
+    display: block
+}
+
+.attraction-separator {
+    border-top: 1px solid #000;
+    margin-top: 36px;
+    margin-bottom: 18px;
+}
+
+.attraction-modal-icons {
+    gap: 12px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding-top: 0;
+    border: none;
+}
+
+.attraction-modal-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: #eee;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+}
+
+.attraction-modal-icon.active {
+    background: #1bbf28;
+    opacity: 1;
+}
+
+.attraction-phone-number {
+    font-weight: 800;
+    font-size: 22px;
+    color: #222;
+    margin-left: 0;
+}
+
+/* Phone link styling inside attraction modals */
+.attraction-phone-number a,
+.attraction-phone-number a:visited {
+    color: #111;
+    text-decoration: none;
+    font-weight: 800;
+}
+.attraction-phone-number a:hover,
+.attraction-phone-number a:focus {
+    color: #111;
+    text-decoration: none;
+}
+
+.attraction-modal-phone {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 0 0 0;
+    margin-top: 18px;
+    border: none;
+}
+
+.attraction-phone-bubble {
+    width: 48px;
+    height: 48px;
+    background: #f1f1f1;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attraction-modal-icons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin-top: 18px;
+    padding-top: 12px;
+    border-top: 1px solid #f3f3f3;
+}
+
+.attraction-modal-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 12px;
+    background: #eee;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.8;
+}
+
+.attraction-modal-icon img {
+    max-width: 60%;
+    max-height: 60%;
+}
+
+.attraction-modal-icon.active {
+    background: #1bbf28;
+    /* green */
+    opacity: 1;
+}
+
 
 /* Fullscreen Image Section */
 #fullscreen-section {

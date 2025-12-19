@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         hamburgerMenu.addEventListener('click', function() {
             this.classList.toggle('active');
             mobileNavWrapper.classList.toggle('active');
-            
+
             // Prevent body scroll when menu is open
             document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
         });
@@ -35,10 +35,10 @@ window.addEventListener('scroll', function() {
     const heroBottomRight = document.querySelector('.hero-bottom-right');
     const infrastructureContent = document.querySelector('.infrastructure-content');
     const umbrellaContent = document.querySelector('.umbrella-content');
-    
+
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
-    
+
     // Calculate stage progress
     const stage1End = windowHeight * 0.5;
     const stage2End = windowHeight * 1.0;
@@ -46,76 +46,106 @@ window.addEventListener('scroll', function() {
     const stage4End = windowHeight * 2.0;
     const stage5End = windowHeight * 2.5;
     const scrollCompleteAt = windowHeight * 3.0;
-    
+
     if (scrollPosition < stage1End) {
         // Stage 1: Scroll hero content up (0% to 50%)
         const stage1Progress = scrollPosition / stage1End;
-        
-        heroContent.style.transform = `translate(-50%, calc(-50% - ${stage1Progress * 100}vh))`;
-        heroContent.style.opacity = 1 - stage1Progress;
-        
-        // Move bottom elements up as well
-        heroBottomLeft.style.transform = `translateY(-${stage1Progress * 100}vh)`;
-        heroBottomLeft.style.opacity = 1 - stage1Progress;
-        
-        heroBottomRight.style.transform = `translateY(-${stage1Progress * 100}vh)`;
-        heroBottomRight.style.opacity = 1 - stage1Progress;
-        
-        heroBg.classList.remove('stage-2', 'stage-3', 'stage-4', 'stage-5', 'scroll-complete');
-        heroSection.classList.remove('scroll-complete');
-        infrastructureContent.classList.remove('visible', 'scroll-complete');
-        umbrellaContent.classList.remove('visible', 'scroll-complete');
+
+        if (heroContent) {
+            heroContent.style.transform = `translate(-50%, calc(-50% - ${stage1Progress * 100}vh))`;
+            heroContent.style.opacity = 1 - stage1Progress;
+        }
+
+        if (heroBottomLeft) {
+            heroBottomLeft.style.transform = `translateY(-${stage1Progress * 100}vh)`;
+            heroBottomLeft.style.opacity = 1 - stage1Progress;
+        }
+
+        if (heroBottomRight) {
+            heroBottomRight.style.transform = `translateY(-${stage1Progress * 100}vh)`;
+            heroBottomRight.style.opacity = 1 - stage1Progress;
+        }
+
+        if (heroBg) heroBg.classList.remove('stage-2', 'stage-3', 'stage-4', 'stage-5', 'scroll-complete');
+        if (heroSection) heroSection.classList.remove('scroll-complete');
+        if (infrastructureContent) infrastructureContent.classList.remove('visible', 'scroll-complete');
+        if (umbrellaContent) umbrellaContent.classList.remove('visible', 'scroll-complete');
     } else if (scrollPosition < stage2End) {
-        // Stage 2: Background moves to top-left (no card)
-        heroContent.style.opacity = 0;
-        heroBottomLeft.style.opacity = 0;
-        heroBottomRight.style.opacity = 0;
-        
-        heroBg.classList.add('stage-2');
-        heroBg.classList.remove('stage-3', 'stage-4', 'stage-5', 'scroll-complete');
-        heroSection.classList.remove('scroll-complete');
-        
-        // No cards visible during transition
-        infrastructureContent.classList.remove('visible', 'scroll-complete');
-        umbrellaContent.classList.remove('visible', 'scroll-complete');
+        if (heroContent) heroContent.style.opacity = 0;
+        if (heroBottomLeft) heroBottomLeft.style.opacity = 0;
+        if (heroBottomRight) heroBottomRight.style.opacity = 0;
+
+        if (heroBg) {
+            heroBg.classList.add('stage-2');
+            heroBg.classList.remove('stage-3', 'stage-4', 'stage-5', 'scroll-complete');
+        }
+        if (heroSection) heroSection.classList.remove('scroll-complete');
+        if (infrastructureContent) infrastructureContent.classList.remove('visible', 'scroll-complete');
+        if (umbrellaContent) umbrellaContent.classList.remove('visible', 'scroll-complete');
     } else if (scrollPosition < stage3End) {
-        // Stage 3: Infrastructure card appears at top-left
-        heroContent.style.opacity = 0;
-        heroBottomLeft.style.opacity = 0;
-        heroBottomRight.style.opacity = 0;
-        
-        heroBg.classList.add('stage-3');
-        heroBg.classList.remove('stage-4', 'stage-5', 'scroll-complete');
-        heroSection.classList.remove('scroll-complete');
-        infrastructureContent.classList.add('visible');
-        infrastructureContent.classList.remove('scroll-complete');
-        umbrellaContent.classList.remove('visible', 'scroll-complete');
+        if (heroContent) heroContent.style.opacity = 0;
+        if (heroBottomLeft) heroBottomLeft.style.opacity = 0;
+        if (heroBottomRight) heroBottomRight.style.opacity = 0;
+
+        if (heroBg) {
+            heroBg.classList.add('stage-3');
+            heroBg.classList.remove('stage-4', 'stage-5', 'scroll-complete');
+        }
+        if (heroSection) heroSection.classList.remove('scroll-complete');
+        if (infrastructureContent) {
+            infrastructureContent.classList.add('visible');
+            infrastructureContent.classList.remove('scroll-complete');
+        }
+        if (umbrellaContent) umbrellaContent.classList.remove('visible', 'scroll-complete');
     } else if (scrollPosition < stage4End) {
-        // Stage 4: Background moves to bottom-right (no card)
-        heroBg.classList.add('stage-4');
-        heroBg.classList.remove('stage-2', 'stage-3', 'stage-5', 'scroll-complete');
-        heroSection.classList.remove('scroll-complete');
-        
-        // Remove infrastructure card during transition
-        infrastructureContent.classList.remove('visible', 'scroll-complete');
-        umbrellaContent.classList.remove('visible', 'scroll-complete');
+        if (heroBg) {
+            heroBg.classList.add('stage-4');
+            heroBg.classList.remove('stage-2', 'stage-3', 'stage-5', 'scroll-complete');
+        }
+        if (heroSection) heroSection.classList.remove('scroll-complete');
+        if (infrastructureContent) infrastructureContent.classList.remove('visible', 'scroll-complete');
+        if (umbrellaContent) umbrellaContent.classList.remove('visible', 'scroll-complete');
     } else if (scrollPosition < scrollCompleteAt) {
-        // Stage 5: Umbrella card appears at bottom-right
-        heroContent.style.opacity = 0;
-        heroBottomLeft.style.opacity = 0;
-        heroBottomRight.style.opacity = 0;
-        
-        heroBg.classList.add('stage-5');
-        heroBg.classList.remove('stage-2', 'stage-3', 'stage-4', 'scroll-complete');
-        heroSection.classList.remove('scroll-complete');
-        infrastructureContent.classList.remove('visible', 'scroll-complete');
-        umbrellaContent.classList.add('visible');
-        umbrellaContent.classList.remove('scroll-complete');
+        if (heroContent) heroContent.style.opacity = 0;
+        if (heroBottomLeft) heroBottomLeft.style.opacity = 0;
+        if (heroBottomRight) heroBottomRight.style.opacity = 0;
+
+        if (heroBg) {
+            heroBg.classList.add('stage-5');
+            heroBg.classList.remove('stage-2', 'stage-3', 'stage-4', 'scroll-complete');
+        }
+        if (heroSection) heroSection.classList.remove('scroll-complete');
+        if (infrastructureContent) infrastructureContent.classList.remove('visible', 'scroll-complete');
+        if (umbrellaContent) {
+            umbrellaContent.classList.add('visible');
+            umbrellaContent.classList.remove('scroll-complete');
+        }
     } else {
-        // Scroll Complete: Unfix everything and allow normal scrolling
-        heroBg.classList.add('scroll-complete');
-        heroSection.classList.add('scroll-complete');
-        umbrellaContent.classList.add('scroll-complete');
-        infrastructureContent.classList.add('scroll-complete');
+        if (heroBg) heroBg.classList.add('scroll-complete');
+        if (heroSection) heroSection.classList.add('scroll-complete');
+        if (umbrellaContent) umbrellaContent.classList.add('scroll-complete');
+        if (infrastructureContent) infrastructureContent.classList.add('scroll-complete');
     }
 });
+
+// Attraction items: open reusable modal and populate with item content
+// document.addEventListener('DOMContentLoaded', function() {
+//     const attractionItems = document.querySelectorAll('.attraction-item');
+//     const attractionModalEl = document.getElementById('attractionModal');
+
+//     if (!attractionModalEl || attractionItems.length === 0) return;
+
+//     const attractionModal = new bootstrap.Modal(attractionModalEl);
+//     const heroImg = document.getElementById('attractionModalImg');
+//     const modalTitle = document.getElementById('attractionModalLabel');
+//     const modalLead = document.getElementById('attractionModalLead');
+//     const modalBody = document.getElementById('attractionModalBody');
+//     const phoneContainer = document.getElementById('attractionModalPhone');
+//     const phoneLink = document.getElementById('attractionModalPhoneLink');
+//     const iconsContainer = document.getElementById('attractionModalIcons');
+
+//     attractionItems.forEach(item => {
+//             item.style.cursor = 'pointer';
+//             // click handler is now in previous patch
+//     });
+//     });

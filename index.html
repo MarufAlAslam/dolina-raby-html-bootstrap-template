@@ -208,7 +208,7 @@
                 <div class="row attractions-grid">
                     <!-- Column 1: Items 1 and 2 -->
                     <div class="col-lg-4">
-                        <div class="attraction-item">
+                        <div class="attraction-item" data-bs-toggle="modal" data-bs-target="#modalGastronomia">
                             <img src="img/item-1.png" alt="Gastronomia" class="attraction-image">
                             <div class="attraction-overlay">
                                 <img src="img/item-1-icon.png" alt="Icon" class="overlay-icon">
@@ -216,7 +216,7 @@
                                 <p class="overlay-text">Szczegóły</p>
                             </div>
                         </div>
-                        <div class="attraction-item">
+                        <div class="attraction-item" data-bs-toggle="modal" data-bs-target="#modalSauna">
                             <img src="img/item-2.png" alt="Sauna i Morsowanie" class="attraction-image">
                             <div class="attraction-overlay">
                                 <img src="img/item-2-icon.png" alt="Icon" class="overlay-icon">
@@ -227,7 +227,8 @@
                     </div>
                     <!-- Column 2: Item 3 -->
                     <div class="col-lg-4">
-                        <div class="attraction-item attraction-item-tall">
+                        <div class="attraction-item attraction-item-tall" data-bs-toggle="modal"
+                            data-bs-target="#modalParkLinowy">
                             <img src="img/item-3.png" alt="Park Linowy i Dmuchańce" class="attraction-image">
                             <div class="attraction-overlay">
                                 <img src="img/item-3-icon.png" alt="Icon" class="overlay-icon">
@@ -238,7 +239,7 @@
                     </div>
                     <!-- Column 3: Items 4 and 5 -->
                     <div class="col-lg-4">
-                        <div class="attraction-item">
+                        <div class="attraction-item" data-bs-toggle="modal" data-bs-target="#modalSprzet">
                             <img src="img/item-4.png" alt="Wypożyczalnia sprzętu sportowego" class="attraction-image">
                             <div class="attraction-overlay">
                                 <img src="img/item-4-icon.png" alt="Icon" class="overlay-icon">
@@ -246,7 +247,7 @@
                                 <p class="overlay-text">Szczegóły</p>
                             </div>
                         </div>
-                        <div class="attraction-item">
+                        <div class="attraction-item" data-bs-toggle="modal" data-bs-target="#modalRowery">
                             <img src="img/item-5.png" alt="Wypożyczalnia rowerów" class="attraction-image">
                             <div class="attraction-overlay">
                                 <img src="img/item-5-icon.png" alt="Icon" class="overlay-icon">
@@ -329,22 +330,32 @@
                         </div>
                         <div class="row">
                             <div class="col-12 text-center mt-4">
-                                <button type="button" class="btn btn-discover btn-more" data-bs-toggle="modal" data-bs-target="#fishingModal">Więcej o naszych łowiskach <img
-                                        src="img/plus.png" alt="plus" class="btn-plus"></button>
+                                <button type="button" class="btn btn-discover btn-more" data-bs-toggle="modal"
+                                    data-bs-target="#fishingModal">Więcej o naszych łowiskach <img src="img/plus.png"
+                                        alt="plus" class="btn-plus"></button>
                             </div>
 
                             <!-- Fishing details modal -->
-                            <div class="modal fade fishing-modal" id="fishingModal" tabindex="-1" aria-labelledby="fishingModalLabel" aria-hidden="true">
+                            <div class="modal fade fishing-modal" id="fishingModal" tabindex="-1"
+                                aria-labelledby="fishingModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-xl modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-body p-0 position-relative">
-                                            <button type="button" class="modal-close-square" data-bs-dismiss="modal" aria-label="Close">&times;</button>
+                                            <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                                                aria-label="Close">&times;</button>
                                             <img src="img/poup-22.png" alt="Wędkowanie Dolina" class="modal-hero-img">
                                             <div class="p-4 p-md-5">
                                                 <h2 id="fishingModalLabel">Wędkowanie Dolina</h2>
-                                                <p class="lead">Dolina Raby oferuje możliwość wędkowania — głębokości sięgające 7 metrów zapewniają doskonałe warunki do rozwoju okazów. Łowisko jest bardzo różnorodne — od przygotowanych jednoosobowych pomostów po dzikie stanowiska w szuwarach.</p>
-                                                <p>W wodzie możesz spotkać: karpie w różnych odmianach, okazy powyżej 20 kg, sandacze, suma, szczupaka oraz wiele innych gatunków. Oferujemy miejsca do parkowania przy stanowiskach i wygodne dojścia z parkingu.</p>
-                                                <p class="mb-0">Jeśli chcesz, mogę dodać mapę dojazdu i dokładne współrzędne na Google Maps.</p>
+                                                <p class="lead">Dolina Raby oferuje możliwość wędkowania — głębokości
+                                                    sięgające 7 metrów zapewniają doskonałe warunki do rozwoju okazów.
+                                                    Łowisko jest bardzo różnorodne — od przygotowanych jednoosobowych
+                                                    pomostów po dzikie stanowiska w szuwarach.</p>
+                                                <p>W wodzie możesz spotkać: karpie w różnych odmianach, okazy powyżej 20
+                                                    kg, sandacze, suma, szczupaka oraz wiele innych gatunków. Oferujemy
+                                                    miejsca do parkowania przy stanowiskach i wygodne dojścia z
+                                                    parkingu.</p>
+                                                <p class="mb-0">Jeśli chcesz, mogę dodać mapę dojazdu i dokładne
+                                                    współrzędne na Google Maps.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -384,10 +395,12 @@
                             <img src="img/map-2.svg" alt="Map 2" class="map-image">
                             <div class="map-overlay">
                                 <h3 class="map-title">Trasa pieszo-rowerowa <br>
-od Orlika</h3>
+                                    od Orlika</h3>
                                 <div class="map-stats my-3">
-                                    <span class="map-stat-item"><img src="img/cycle.png" alt="Cycle" class="map-icon">5 min</span>
-                                    <span class="map-stat-item"><img src="img/walk.png" alt="Walk" class="map-icon">20 min</span>
+                                    <span class="map-stat-item"><img src="img/cycle.png" alt="Cycle" class="map-icon">5
+                                        min</span>
+                                    <span class="map-stat-item"><img src="img/walk.png" alt="Walk" class="map-icon">20
+                                        min</span>
                                 </div>
                                 <span class="map-link">Nawiguj z Google Maps</span>
                             </div>
@@ -398,10 +411,12 @@ od Orlika</h3>
                             <img src="img/map-3.svg" alt="Map 3" class="map-image">
                             <div class="map-overlay">
                                 <h3 class="map-title">Trasa pieszo-rowerowa <br>
-od Stanisławic</h3>
+                                    od Stanisławic</h3>
                                 <div class="map-stats my-3">
-                                    <span class="map-stat-item"><img src="img/cycle.png" alt="Cycle" class="map-icon">5 min</span>
-                                    <span class="map-stat-item"><img src="img/walk.png" alt="Walk" class="map-icon">20 min</span>
+                                    <span class="map-stat-item"><img src="img/cycle.png" alt="Cycle" class="map-icon">5
+                                        min</span>
+                                    <span class="map-stat-item"><img src="img/walk.png" alt="Walk" class="map-icon">20
+                                        min</span>
                                 </div>
                                 <span class="map-link">Nawiguj z Google Maps</span>
                             </div>
@@ -463,7 +478,8 @@ od Stanisławic</h3>
 
                 <div class="row">
                     <div class="col-12 text-center">
-                        <a href="https://www.facebook.com/OsrodekDolinaRabyKlaj" target="_blank" class="btn btn-fb">Dołącz do nas na Facebook <img src="img/f.png" alt="f"
+                        <a href="https://www.facebook.com/OsrodekDolinaRabyKlaj" target="_blank"
+                            class="btn btn-fb">Dołącz do nas na Facebook <img src="img/f.png" alt="f"
                                 class="btn-f-img"></a>
                     </div>
                 </div>
@@ -814,6 +830,194 @@ od Stanisławic</h3>
             </div>
         </footer>
 
+    </div>
+
+    <!-- Attraction modal (reusable for each attraction item) -->
+
+    <!-- Attraction modals: one per attraction -->
+    <!-- Gastronomia Modal -->
+    <div class="modal fade fishing-modal attraction-modal" id="modalGastronomia" tabindex="-1"
+        aria-labelledby="modalGastronomiaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered rounded">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                        aria-label="Close">&times;</button>
+                    <img src="img/gastro-pop.png" alt="Gastronomia" class="modal-hero-img">
+                    <div class="modal-inner">
+                        <div class="attraction-modal-badge"><img src="img/item-1-icon.png" alt=""></div>
+                        <h2 id="modalGastronomiaLabel">Gastronomia</h2>
+                        <p class="lead">W sezonie letnim w Dolinie Raby możesz liczyć zarówno na klasyczny fastfood jak i na danie obiadowe, koniecznie spróbuj u nas lodów i kawy mrożonej.</p>
+                        
+
+                        <div class="attraction-separator"></div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="attraction-modal-icon active"><img src="img/item-1-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sauna Modal -->
+    <div class="modal fade fishing-modal attraction-modal" id="modalSauna" tabindex="-1"
+        aria-labelledby="modalSaunaLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                        aria-label="Close">&times;</button>
+                    <img src="img/sauna-pop.png" alt="Sauna i Morsowanie" class="modal-hero-img">
+                    <div class="modal-inner">
+                        <div class="attraction-modal-badge"><img src="img/item-2-icon.png" alt=""></div>
+                        <h2 id="modalSaunaLabel">Sauna i Morsowanie</h2>
+                        <p class="lead">Dolina jest aktywna również zimą, mamy dogodne miejsce dla Morsów, którzy często nas odwiedzają.</p>
+                        <p>Sauna w Dolinie jest wyjątkowa - taka z trzaskającym płomieniem, dostępem do wody i aromaterapią, tego poziomu zbliżenia z naturą nie znajdziesz w saunach hotelowych.</p>
+
+                        <div id="saunaPhone" class="attraction-modal-phone">
+                            <div class="attraction-phone-bubble"><img src="img/footer-phone.png" alt="Phone" width="20" height="20"></div>
+                            <div class="attraction-phone-number"><a href="tel:+48791999119">791 999 119</a></div>
+                        </div>
+
+                        <div class="attraction-separator"></div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon active"><img src="img/item-2-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Park Linowy Modal -->
+    <div class="modal fade fishing-modal attraction-modal" id="modalParkLinowy" tabindex="-1"
+        aria-labelledby="modalParkLinowyLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                        aria-label="Close">&times;</button>
+                    <img src="img/park-pop.png" alt="Park Linowy i Dmuchańce" class="modal-hero-img">
+                    <div class="modal-inner">
+                        <div class="attraction-modal-badge"><img src="img/item-3-icon.png" alt=""></div>
+                        <h2 id="modalParkLinowyLabel">Park Linowy<br>i Dmuchańce</h2>
+                        <p class="lead">Oferuje frajdę dla mniej i bardziej zaawansowanych, czynny tylko w sezonie letnim. Wstępny trening możesz urządzić na ogólnodostępnej i darmowej ściance wspinaczkowej.</p>
+                        <p class="small-note">Uwaga - z parku linowego korzystać można tylko pod nadzorem i po przeszkoleniu.</p>
+
+                        <div class="attraction-modal-phone">
+                            <div class="attraction-phone-bubble"><img src="img/footer-phone.png" alt="Phone" width="20" height="20"></div>
+                            <div class="attraction-phone-number"><a href="tel:+48535274079">535 274 079</a></div>
+                        </div>
+
+                        <div class="attraction-separator"></div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon active"><img src="img/item-3-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wypożyczalnia sprzętu sportowego Modal -->
+    <div class="modal fade fishing-modal attraction-modal" id="modalSprzet" tabindex="-1"
+        aria-labelledby="modalSprzetLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                        aria-label="Close">&times;</button>
+                    <img src="img/sprzet-pop.png" alt="Wypożyczalnia sprzętu sportowego" class="modal-hero-img">
+                    <div class="modal-inner">
+                        <div class="attraction-modal-badge"><img src="img/item-4-icon.png" alt=""></div>
+                        <h2 id="modalSprzetLabel">Wypożyczalnia sprzętu sportowego - wodnego.</h2>
+                        <p class="lead">Oferuje rowerki wodne, kajaki, deski SUP.</p>
+                        <p>Wypożycz kajak, rower wodny lub deskę SUP i korzystaj z atrakcji Doliny Raby. Sprzęt jest regularnie serwisowany i dostępny sezonowo.</p>
+
+                        <div class="attraction-modal-phone">
+                            <div class="attraction-phone-bubble"><img src="img/footer-phone.png" alt="Phone" width="20" height="20"></div>
+                            <div class="attraction-phone-number"><a href="tel:+48601082724">601 082 724</a></div>
+                        </div>
+
+                        <div class="attraction-separator"></div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon active"><img src="img/item-5-icon.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wypożyczalnia rowerów Modal -->
+    <div class="modal fade fishing-modal attraction-modal" id="modalRowery" tabindex="-1"
+        aria-labelledby="modalRoweryLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body p-0 position-relative">
+                    <button type="button" class="modal-close-square" data-bs-dismiss="modal"
+                        aria-label="Close">&times;</button>
+                    <img src="img/rowery-pop.png" alt="Wypożyczalnia rowerów" class="modal-hero-img">
+                    <div class="modal-inner">
+                        <div class="attraction-modal-badge"><img src="img/item-5-icon.png" alt=""></div>
+                        <h2 id="modalRoweryLabel">Wypożyczalnia<br>rowerów</h2>
+                        <p class="lead">Zaplanuj podróż z początkiem w Dolinie, masz do dyspozycji zarówno elektryka jak i rower klasyczny.</p>
+                        <p>Lubisz offroad, instagramowe miejsca, szlak historyczny, rezerwaty czy po prostu chcesz złapać oddech w Puszczy - podpowiemy jak nie zmarnować czasu.</p>
+
+                        <div class="attraction-modal-phone">
+                            <div class="attraction-phone-bubble"><img src="img/footer-phone.png" alt="Phone" width="20" height="20"></div>
+                            <div class="attraction-phone-number"><a href="tel:+48791999119">791 999 119</a></div>
+                        </div>
+
+                        <div class="attraction-separator"></div>
+
+                        <div class="d-flex align-items-center justify-content-between mt-3">
+                            <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon active"><img src="img/item-4-icon.png" alt=""></div>
+                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap 5 JS -->
