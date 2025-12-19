@@ -551,8 +551,8 @@ html {
 }
 
 .btn-fb {
-    background-color: #1D75E0;
-    color: #fff;
+    background-color: #1D75E0 !important;
+    color: #fff !important;
     border: none;
     padding: 14px 28px;
     font-weight: 700;
@@ -560,6 +560,12 @@ html {
     display: inline-flex;
     align-items: center;
     gap: 10px;
+}
+
+.btn-fb:hover {
+    background-color: #1669c1 !important;
+    color: #fff !important;
+    text-decoration: none;
 }
 
 .btn-f-img {
