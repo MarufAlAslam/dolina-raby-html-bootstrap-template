@@ -149,3 +149,15 @@ window.addEventListener('scroll', function() {
 //             // click handler is now in previous patch
 //     });
 //     });
+
+// Nav: trigger hero Stage 3 when clicking 'O nas'
+document.addEventListener('DOMContentLoaded', function() {
+    const navOnas = document.getElementById('navOnas');
+    if (!navOnas) return;
+
+    navOnas.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = window.innerHeight * 1.1; // inside stage 3 (between 1.0 and 1.5 * windowHeight)
+        window.scrollTo({ top: target, behavior: 'smooth' });
+    });
+});
