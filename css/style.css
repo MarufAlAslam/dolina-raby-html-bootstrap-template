@@ -723,14 +723,14 @@ html {
     transition: transform 260ms cubic-bezier(.2, .9, .25, 1), filter 200ms ease;
 }
 
-.feature-btn:hover {
+/* .feature-btn:hover {
     transform: translateY(-6px);
     box-shadow: 0 14px 28px rgba(20, 40, 60, 0.08);
-}
-
+} */
+/* 
 .feature-btn:hover .feature-icon {
     transform: translateY(-6px) scale(1.06);
-}
+} */
 
 @media (prefers-reduced-motion: reduce) {
     .feature-btn {

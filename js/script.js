@@ -213,29 +213,29 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Ensure feature icons open modals programmatically (robust fallback)
-        const featureButtons = document.querySelectorAll('.feature-btn');
-        if (featureButtons.length) {
-            featureButtons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    const target = this.getAttribute('data-bs-target');
-                    if (target) {
-                        const modalEl = document.querySelector(target);
-                        if (modalEl && typeof bootstrap !== 'undefined') {
-                            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
-                            bsModal.show();
-                        }
-                    }
-                });
+        // const featureButtons = document.querySelectorAll('.feature-btn');
+        // if (featureButtons.length) {
+        //     featureButtons.forEach(btn => {
+        //         btn.addEventListener('click', function(e) {
+        //             const target = this.getAttribute('data-bs-target');
+        //             if (target) {
+        //                 const modalEl = document.querySelector(target);
+        //                 if (modalEl && typeof bootstrap !== 'undefined') {
+        //                     const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+        //                     bsModal.show();
+        //                 }
+        //             }
+        //         });
 
-                // keyboard: support Enter/Space for non-button elements (defensive)
-                btn.addEventListener('keydown', function(e) {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        this.click();
-                    }
-                });
-            });
-        }
+        //         // keyboard: support Enter/Space for non-button elements (defensive)
+        //         btn.addEventListener('keydown', function(e) {
+        //             if (e.key === 'Enter' || e.key === ' ') {
+        //                 e.preventDefault();
+        //                 this.click();
+        //             }
+        //         });
+        //     });
+        // }
 
         // Attraction modal footer icons — switch between modals when clicked
         const attractionIcons = document.querySelectorAll('.attraction-modal-icon');
