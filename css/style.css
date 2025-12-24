@@ -1066,6 +1066,16 @@ div#modalRowery {
     text-decoration: underline;
 }
 
+/* Footer link hover: subtle opacity */
+.footer-title a {
+    color: inherit;
+    text-decoration: underline;
+    transition: opacity 0.2s ease;
+}
+.footer-title a:hover {
+    opacity: 0.6;
+} 
+
 .footer-subtitle {
     font-size: 18px;
     font-weight: 700;
@@ -1106,6 +1116,10 @@ div#modalRowery {
     font-size: 18px;
     font-weight: 700;
     color: #000;
+    transition: opacity 0.2s ease;
+}
+.contact-text:hover {
+    opacity: 0.6;
 }
 
 .footer-nav ul {
@@ -1444,8 +1458,23 @@ button#floatingBurger {
     font-weight: 700;
     line-height: 1.4;
     /* padding-bottom: 15px; */
-    border-bottom: 2px solid white;
+    /* border-bottom: 2px solid white; */
     width: 100%;
+}
+
+/* Hero-bottom 'do Raby' link: white underline and subtle hover */
+.hero-bottom-right .hero-link {
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: #ffffff;
+    text-underline-offset: 3px;
+    transition: opacity 0.18s ease;
+}
+.hero-bottom-right .hero-link:hover {
+    opacity: 0.8;
+}
+.hero-bottom-right {
+    z-index: 9999999999999;
 }
 
 .down-arrow {
