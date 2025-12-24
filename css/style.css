@@ -789,6 +789,7 @@ html {
     font-weight: 700;
     color: #000;
     text-decoration: underline;
+    transition: opacity 180ms ease, color 180ms ease;
 }
 
 .map-icon {
@@ -811,6 +812,65 @@ html {
     font-size: 16px;
     /* font-weight: 700; */
     color: #000;
+}
+
+/* Map card hover effects */
+.map-card {
+    transition: transform 260ms cubic-bezier(.2, .9, .25, 1), box-shadow 260ms cubic-bezier(.2, .9, .25, 1);
+    will-change: transform;
+}
+
+.map-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 18px 40px rgba(8, 20, 40, 0.12);
+}
+
+.map-image {
+    transition: transform 360ms cubic-bezier(.2, .9, .25, 1);
+}
+
+.map-card:hover .map-image {
+    transform: scale(1.04);
+}
+
+.map-overlay {
+    transition: transform 260ms cubic-bezier(.2, .9, .25, 1), opacity 260ms ease, background 260ms ease;
+    transform: translateY(0);
+}
+
+.map-card:hover .map-overlay {
+    transform: translateY(-10px);
+    opacity: 0.98;
+    /* subtle lift to reveal the content more */
+}
+
+.map-card:hover .map-link,
+.map-card:focus .map-link {
+    opacity: 0.85;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+
+    .map-card,
+    .map-image,
+    .map-overlay {
+        transition: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+}
+
+/* Disable scale lift on small screens for stability */
+@media (max-width: 768px) {
+    .map-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .map-card:hover .map-image {
+        transform: none;
+    }
 }
 
 div#fishingModal {
@@ -1691,6 +1751,10 @@ button#floatingBurger {
     color: white;
     font-size: 14px;
     transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.hero-content.w-100 {
+    z-index: 9999999;
 }
 
 .hero-bottom-left img {
