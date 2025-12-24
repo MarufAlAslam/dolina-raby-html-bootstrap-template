@@ -252,6 +252,14 @@ html {
     z-index: 10002;
 }
 
+/* On mobile, when main mobile nav is open, push everything else behind (z-index:1) */
+@media (max-width: 1020px) {
+    body.mobile-nav-open *:not(.mobile-nav-wrapper):not(.mobile-nav-wrapper *) {
+        position: relative;
+        z-index: 1;
+    }
+}
+
 /* Layout spacing for left panel content */
 .mobile-nav-wrapper.active {
     padding: 40px 24px 40px 40px;
@@ -495,6 +503,10 @@ html {
 
     /* On mobile we keep the original mobile panel; hide the desktop offscreen menu */
     .offscreen-menu {
+        display: none !important;
+    }
+
+    button#floatingBurger {
         display: none !important;
     }
 
@@ -1511,6 +1523,7 @@ a[aria-label="klaj.pl"]:focus img,
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     a[aria-label="klaj.pl"] img,
     .sugarfree {
         transition: none !important;

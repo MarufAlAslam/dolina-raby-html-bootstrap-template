@@ -143,13 +143,43 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.style.overflow = 'hidden';
         }
 
+        // Scroll lock for mobile nav: save scroll position, fix body, and restore on close
+        let _scrollY = 0;
+        function lockBodyScroll() {
+            _scrollY = window.scrollY || window.pageYOffset;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${_scrollY}px`;
+            document.body.style.left = '0';
+            document.body.style.right = '0';
+            document.body.style.width = '100%';
+        }
+        function unlockBodyScroll() {
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.left = '';
+            document.body.style.right = '';
+            document.body.style.width = '';
+            window.scrollTo(0, _scrollY || 0);
+            _scrollY = 0;
+        }
+
     if (hamburgerMenu && mobileNavWrapper) {
         hamburgerMenu.addEventListener('click', function() {
             this.classList.toggle('active');
             mobileNavWrapper.classList.toggle('active');
 
-            // Prevent body scroll when menu is open
-            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+            // Prevent body scroll when menu is open via robust scroll lock on mobile
+            const isActive = this.classList.contains('active');
+            if (window.innerWidth <= 1020) {
+                document.body.classList.toggle('mobile-nav-open', isActive);
+                if (isActive) lockBodyScroll();
+                else unlockBodyScroll();
+            } else {
+                // Desktop behavior: just use overflow toggle
+                document.body.style.overflow = isActive ? 'hidden' : '';
+                document.body.classList.remove('mobile-nav-open');
+                unlockBodyScroll();
+            }
 
             // Ensure offscreen menu is closed when main hamburger toggles the main mobile nav
             const existingOff = document.querySelector('.offscreen-menu');
@@ -171,6 +201,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 hamburgerMenu.classList.remove('active');
                 mobileNavWrapper.classList.remove('active');
                 document.body.style.overflow = '';
+                document.body.classList.remove('mobile-nav-open');
+                unlockBodyScroll();
 
                 const fbBtn = document.getElementById('floatingBurger');
                 if (fbBtn) {
@@ -191,6 +223,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 hamburgerMenu.classList.remove('active');
                 mobileNavWrapper.classList.remove('active');
                 document.body.style.overflow = '';
+                document.body.classList.remove('mobile-nav-open');
+                unlockBodyScroll();
                 const fbBtn = document.getElementById('floatingBurger');
                 if (fbBtn) {
                     fbBtn.classList.remove('active');
@@ -206,9 +240,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     hamburgerMenu.classList.remove('active');
                     mobileNavWrapper.classList.remove('active');
                     document.body.style.overflow = '';
+                    document.body.classList.remove('mobile-nav-open');
+                    unlockBodyScroll();
                 }
                 const existingOff = document.querySelector('.offscreen-menu');
                 if (existingOff) closeOffscreen();
+            }
+        });
+
+        // Ensure we clean up scroll lock if viewport crosses breakpoint
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 1020) {
+                document.body.classList.remove('mobile-nav-open');
+                unlockBodyScroll();
             }
         });
 
