@@ -95,10 +95,10 @@ document.addEventListener('DOMContentLoaded', function() {
             contact.innerHTML = `
                 <hr class="offscreen-sep">
                 <div class="offscreen-social">
-                    <div class="social-icon">❤</div>
+                    <div class="social-icon" aria-hidden="true">❤</div>
                     <div class="social-links">
-                        <a href="#">Facebook</a>
-                        <a href="#">Instagram</a>
+                        <a href="https://www.facebook.com/OsrodekDolinaRabyKlaj" target="_blank" rel="noopener noreferrer" aria-label="Dolina Raby on Facebook">Facebook</a>
+                        <a href="#" aria-label="Dolina Raby on Instagram">Instagram</a>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 <div class="offscreen-phones">
                     <div class="phone-row">
-                        <img src="img/footer-phone.png" alt="Phone" class="off-icon">
+                        <img src="img/offscreen-phone.png" alt="Phone" class="off-icon">
                         <div class="phone-lines">
                             <a href="tel:+48789230680" class="phone-number">+48 789 230 680</a>
                             <a href="mailto:doraby@wodociagikklaj.pl" class="phone-email">doraby@wodociagikklaj.pl</a>
