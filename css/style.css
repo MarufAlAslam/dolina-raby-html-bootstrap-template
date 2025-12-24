@@ -593,7 +593,7 @@ html {
 
 .sections {
     position: relative;
-    z-index: 9999;
+    z-index: 99999999999;
 }
 
 /* About Section */
@@ -718,8 +718,57 @@ html {
 .feature-title {
     font-size: 16px;
     font-weight: 700;
-    color: #000;
-    margin: 0;
+}
+
+/* Feature buttons (interactive icons) */
+.feature-btn {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    padding: 12px 8px;
+    display: block;
+    color: inherit;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 240ms cubic-bezier(.2, .9, .25, 1), box-shadow 240ms ease;
+}
+
+.feature-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(34, 164, 90, 0.12);
+}
+
+.feature-btn .feature-icon {
+    transition: transform 260ms cubic-bezier(.2, .9, .25, 1), filter 200ms ease;
+}
+
+.feature-btn:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(20, 40, 60, 0.08);
+}
+
+.feature-btn:hover .feature-icon {
+    transform: translateY(-6px) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .feature-btn {
+        transition: none !important;
+        transform: none !important;
+        box-shadow: none !important;
+    }
+
+    .feature-btn .feature-icon {
+        transition: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .features-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 /* Maps / Directions Section */
@@ -1159,11 +1208,19 @@ div#modalRowery {
     align-items: center;
     justify-content: center;
     opacity: 0.8;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(.2, .9, .25, 1), box-shadow 160ms ease, background 160ms ease;
+    border: none;
 }
 
 .attraction-modal-icon img {
     max-width: 60%;
     max-height: 60%;
+}
+
+.attraction-modal-icon:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(12, 18, 26, 0.06);
 }
 
 .attraction-modal-icon.active {

@@ -280,26 +280,26 @@
         <section id="features-section">
             <div class="container custom-container-2" data-aos="fade-up">
                 <div class="features-list">
-                    <div class="feature-item">
-                        <img src="img/icon-1.png" alt="" class="feature-icon">
+                    <button type="button" class="feature-item feature-btn" data-bs-toggle="modal" data-bs-target="#modalGastronomia" aria-label="Otwórz Gastronomia">
+                        <img src="img/icon-1.png" alt="Gastronomia" class="feature-icon">
                         <p class="feature-title">Plenerowa siłownia</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="img/icon-2.png" alt="" class="feature-icon">
+                    </button>
+                    <button type="button" class="feature-item feature-btn" data-bs-toggle="modal" data-bs-target="#modalSauna" aria-label="Otwórz Sauna i Morsowanie">
+                        <img src="img/icon-2.png" alt="Sauna" class="feature-icon">
                         <p class="feature-title">Place zabaw i ścianki wspinaczkowe</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="img/icon-3.png" alt="" class="feature-icon">
+                    </button>
+                    <button type="button" class="feature-item feature-btn" data-bs-toggle="modal" data-bs-target="#modalParkLinowy" aria-label="Otwórz Park Linowy">
+                        <img src="img/icon-3.png" alt="Park Linowy" class="feature-icon">
                         <p class="feature-title">Boiska do siatkówki</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="img/icon-4.png" alt="" class="feature-icon">
+                    </button>
+                    <button type="button" class="feature-item feature-btn" data-bs-toggle="modal" data-bs-target="#modalSprzet" aria-label="Otwórz Wypożyczalnia sprzętu">
+                        <img src="img/icon-4.png" alt="Wypożyczalnia" class="feature-icon">
                         <p class="feature-title">Miasteczko rowerowe do nauki jazdy</p>
-                    </div>
-                    <div class="feature-item">
-                        <img src="img/icon-5.png" alt="" class="feature-icon">
+                    </button>
+                    <button type="button" class="feature-item feature-btn" data-bs-toggle="modal" data-bs-target="#modalRowery" aria-label="Otwórz Wypożyczalnia rowerów">
+                        <img src="img/icon-5.png" alt="Wypożyczalnia rowerów" class="feature-icon">
                         <p class="feature-title">Naukowa ścieżka geologiczna</p>
-                    </div>
+                    </button>
                     <div class="feature-item">
                         <img src="img/icon-6.png" alt="" class="feature-icon">
                         <p class="feature-title">Aleja sensoryczna</p>
@@ -873,12 +873,12 @@
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="attraction-modal-icon active"><img src="img/item-1-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            <div class="d-flex align-items-center gap-3 attraction-modal-icons">
+                                <button type="button" class="attraction-modal-icon active" data-target="#modalGastronomia" data-attraction="1" aria-label="Otwórz Gastronomia"><img src="img/item-1-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSauna" data-attraction="2" aria-label="Otwórz Sauna"><img src="img/item-2-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalParkLinowy" data-attraction="3" aria-label="Otwórz Park Linowy"><img src="img/item-3-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSprzet" data-attraction="4" aria-label="Otwórz Wypożyczalnia sprzętu"><img src="img/item-4-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalRowery" data-attraction="5" aria-label="Otwórz Wypożyczalnia rowerów"><img src="img/item-5-icon.png" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -914,12 +914,12 @@
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon active"><img src="img/item-2-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            <div class="d-flex align-items-center gap-3 attraction-modal-icons">
+                                <button type="button" class="attraction-modal-icon" data-target="#modalGastronomia" data-attraction="1" aria-label="Otwórz Gastronomia"><img src="img/item-1-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon active" data-target="#modalSauna" data-attraction="2" aria-label="Otwórz Sauna"><img src="img/item-2-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalParkLinowy" data-attraction="3" aria-label="Otwórz Park Linowy"><img src="img/item-3-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSprzet" data-attraction="4" aria-label="Otwórz Wypożyczalnia sprzętu"><img src="img/item-4-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalRowery" data-attraction="5" aria-label="Otwórz Wypożyczalnia rowerów"><img src="img/item-5-icon.png" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -956,12 +956,12 @@
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon active"><img src="img/item-3-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            <div class="d-flex align-items-center gap-3 attraction-modal-icons">
+                                <button type="button" class="attraction-modal-icon" data-target="#modalGastronomia" data-attraction="1" aria-label="Otwórz Gastronomia"><img src="img/item-1-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSauna" data-attraction="2" aria-label="Otwórz Sauna"><img src="img/item-2-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon active" data-target="#modalParkLinowy" data-attraction="3" aria-label="Otwórz Park Linowy"><img src="img/item-3-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSprzet" data-attraction="4" aria-label="Otwórz Wypożyczalnia sprzętu"><img src="img/item-4-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalRowery" data-attraction="5" aria-label="Otwórz Wypożyczalnia rowerów"><img src="img/item-5-icon.png" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -996,12 +996,12 @@
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-4-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon active"><img src="img/item-5-icon.png" alt=""></div>
+                            <div class="d-flex align-items-center gap-3 attraction-modal-icons">
+                                <button type="button" class="attraction-modal-icon" data-target="#modalGastronomia" data-attraction="1" aria-label="Otwórz Gastronomia"><img src="img/item-1-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSauna" data-attraction="2" aria-label="Otwórz Sauna"><img src="img/item-2-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalParkLinowy" data-attraction="3" aria-label="Otwórz Park Linowy"><img src="img/item-3-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSprzet" data-attraction="4" aria-label="Otwórz Wypożyczalnia sprzętu"><img src="img/item-4-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon active" data-target="#modalRowery" data-attraction="5" aria-label="Otwórz Wypożyczalnia rowerów"><img src="img/item-5-icon.png" alt=""></button>
                             </div>
                         </div>
                     </div>
@@ -1037,12 +1037,12 @@
 
                         <div class="d-flex align-items-center justify-content-between mt-3">
                             <div class="text-muted" style="font-weight:700;">Pozostałe atrakcje:</div>
-                            <div class="d-flex align-items-center gap-3">
-                                <div class="attraction-modal-icon"><img src="img/item-1-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-2-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-3-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon active"><img src="img/item-4-icon.png" alt=""></div>
-                                <div class="attraction-modal-icon"><img src="img/item-5-icon.png" alt=""></div>
+                            <div class="d-flex align-items-center gap-3 attraction-modal-icons">
+                                <button type="button" class="attraction-modal-icon" data-target="#modalGastronomia" data-attraction="1" aria-label="Otwórz Gastronomia"><img src="img/item-1-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSauna" data-attraction="2" aria-label="Otwórz Sauna"><img src="img/item-2-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalParkLinowy" data-attraction="3" aria-label="Otwórz Park Linowy"><img src="img/item-3-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon" data-target="#modalSprzet" data-attraction="4" aria-label="Otwórz Wypożyczalnia sprzętu"><img src="img/item-4-icon.png" alt=""></button>
+                                <button type="button" class="attraction-modal-icon active" data-target="#modalRowery" data-attraction="5" aria-label="Otwórz Wypożyczalnia rowerów"><img src="img/item-5-icon.png" alt=""></button>
                             </div>
                         </div>
                     </div>

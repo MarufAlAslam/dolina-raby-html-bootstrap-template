@@ -211,6 +211,89 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (existingOff) closeOffscreen();
             }
         });
+
+        // Ensure feature icons open modals programmatically (robust fallback)
+        const featureButtons = document.querySelectorAll('.feature-btn');
+        if (featureButtons.length) {
+            featureButtons.forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    const target = this.getAttribute('data-bs-target');
+                    if (target) {
+                        const modalEl = document.querySelector(target);
+                        if (modalEl && typeof bootstrap !== 'undefined') {
+                            const bsModal = bootstrap.Modal.getOrCreateInstance(modalEl);
+                            bsModal.show();
+                        }
+                    }
+                });
+
+                // keyboard: support Enter/Space for non-button elements (defensive)
+                btn.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
+
+        // Attraction modal footer icons — switch between modals when clicked
+        const attractionIcons = document.querySelectorAll('.attraction-modal-icon');
+        if (attractionIcons.length) {
+            attractionIcons.forEach(icon => {
+                icon.addEventListener('click', function(e) {
+                    const targetSelector = this.getAttribute('data-target');
+                    const attractionId = this.getAttribute('data-attraction');
+                    const currentModalEl = this.closest('.modal');
+                    if (!targetSelector || !currentModalEl) return;
+
+                    // If clicking icon for the modal already open, just update active state
+                    if (currentModalEl.id === targetSelector.replace('#', '')) {
+                        // Ensure active state inside current modal
+                        const iconsInCurrent = currentModalEl.querySelectorAll('.attraction-modal-icon');
+                        iconsInCurrent.forEach(ic => ic.classList.toggle('active', ic.getAttribute('data-attraction') === attractionId));
+                        return;
+                    }
+
+                    const currentBs = bootstrap.Modal.getInstance(currentModalEl);
+                    // Hide current modal, then show target when fully hidden
+                    if (currentBs) {
+                        function onHidden() {
+                            currentModalEl.removeEventListener('hidden.bs.modal', onHidden);
+                            const targetEl = document.querySelector(targetSelector);
+                            if (targetEl) {
+                                // Show the requested modal
+                                const t = bootstrap.Modal.getOrCreateInstance(targetEl);
+                                t.show();
+
+                                // When target is shown, set active icon inside it
+                                function onShown() {
+                                    targetEl.removeEventListener('shown.bs.modal', onShown);
+                                    const iconsInTarget = targetEl.querySelectorAll('.attraction-modal-icon');
+                                    iconsInTarget.forEach(ic => {
+                                        ic.classList.toggle('active', ic.getAttribute('data-attraction') === attractionId);
+                                    });
+                                }
+                                targetEl.addEventListener('shown.bs.modal', onShown);
+                            }
+                        }
+                        currentModalEl.addEventListener('hidden.bs.modal', onHidden);
+                        currentBs.hide();
+                    } else {
+                        const targetEl = document.querySelector(targetSelector);
+                        if (targetEl) bootstrap.Modal.getOrCreateInstance(targetEl).show();
+                    }
+                });
+
+                // Support keyboard activation
+                icon.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        this.click();
+                    }
+                });
+            });
+        }
     }
 });
 
