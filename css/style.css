@@ -225,7 +225,7 @@ html {
     height: 100%;
     background: #ffffff;
     border-radius: 0 28px 28px 0;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
     z-index: 10001;
 }
 
@@ -246,7 +246,7 @@ html {
 }
 
 /* Ensure menu content sits above the decorative panels and is readable */
-.mobile-nav-wrapper.active > * {
+.mobile-nav-wrapper.active>* {
     position: relative;
     z-index: 10002;
 }
@@ -315,7 +315,7 @@ html {
     height: 100%;
     background: #ffffff;
     border-radius: 0 28px 28px 0;
-    box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
     padding: 40px 28px;
     overflow-y: auto;
     z-index: 10052;
@@ -347,6 +347,7 @@ html {
     flex-direction: column;
     gap: 18px;
 }
+
 .offscreen-links li a {
     color: #111;
     text-decoration: none;
@@ -362,7 +363,7 @@ html {
 .offscreen-sep {
     border: none;
     height: 1px;
-    background: rgba(0,0,0,0.06);
+    background: rgba(0, 0, 0, 0.06);
     margin: 18px 0;
 }
 
@@ -371,10 +372,12 @@ html {
     align-items: flex-start;
     gap: 12px;
 }
+
 .offscreen-social .social-icon {
     font-size: 18px;
     margin-top: 4px;
 }
+
 .offscreen-social .social-links a {
     display: block;
     color: #111;
@@ -388,16 +391,19 @@ html {
     gap: 12px;
     align-items: flex-start;
 }
+
 .offscreen-phones .off-icon {
     width: 24px;
     height: 24px;
 }
+
 .offscreen-phones .phone-lines a {
     display: block;
     color: #111;
     text-decoration: none;
     font-weight: 700;
 }
+
 .offscreen-phones .phone-email {
     font-weight: 400;
     color: #111;
@@ -428,13 +434,24 @@ html {
 }
 
 @media (max-width: 1020px) {
+
     /* On mobile we keep the original mobile panel; hide the desktop offscreen menu */
-    .offscreen-menu { display: none !important; }
+    .offscreen-menu {
+        display: none !important;
+    }
+
     .offscreen-menu::after {
         display: none;
     }
-    .offscreen-overlay { left: 60%; }
-    .offscreen-panel { width: 100%; border-radius: 0; }
+
+    .offscreen-overlay {
+        left: 60%;
+    }
+
+    .offscreen-panel {
+        width: 100%;
+        border-radius: 0;
+    }
 }
 
 /* Hero Banner */
@@ -1317,9 +1334,10 @@ div#modalRowery {
     text-decoration: underline;
     transition: opacity 0.2s ease;
 }
+
 .footer-title a:hover {
     opacity: 0.6;
-} 
+}
 
 .footer-subtitle {
     font-size: 18px;
@@ -1363,6 +1381,7 @@ div#modalRowery {
     color: #000;
     transition: opacity 0.2s ease;
 }
+
 .contact-text:hover {
     opacity: 0.6;
 }
@@ -1715,11 +1734,17 @@ button#floatingBurger {
     text-underline-offset: 3px;
     transition: opacity 0.18s ease;
 }
+
 .hero-bottom-right .hero-link:hover {
     opacity: 0.8;
 }
+
 .hero-bottom-right {
-    z-index: 9999999999999;
+    z-index: 9999;
+}
+
+button.mobile-close {
+    display: none;
 }
 
 .down-arrow {
@@ -1949,7 +1974,7 @@ button#floatingBurger {
         font-size: 26px;
         align-items: center;
         justify-content: center;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
         z-index: 1100;
         cursor: pointer;
     }
