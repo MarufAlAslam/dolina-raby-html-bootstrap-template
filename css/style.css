@@ -428,6 +428,8 @@ html {
 }
 
 @media (max-width: 1020px) {
+    /* On mobile we keep the original mobile panel; hide the desktop offscreen menu */
+    .offscreen-menu { display: none !important; }
     .offscreen-menu::after {
         display: none;
     }
@@ -1835,6 +1837,16 @@ button#floatingBurger {
 
     .mobile-nav-wrapper.active {
         left: 0;
+        /* ensure the mobile panel looks like the original mobile menu (override desktop decorative panels) */
+        background: rgba(0, 0, 0, 0.95);
+        padding: 80px 30px 30px;
+    }
+
+    /* Hide desktop decorative panels on mobile so the menu content is unobstructed */
+    .mobile-nav-wrapper.active::before,
+    .mobile-nav-wrapper.active::after {
+        display: none !important;
+        content: none !important;
     }
 
     .mobile-top-nav {
@@ -1842,6 +1854,11 @@ button#floatingBurger {
         flex-direction: column;
         margin-bottom: 20px;
         padding-bottom: 20px;
+    }
+
+    /* Mobile explicit close button inside the mobile panel */
+    .mobile-close {
+        display: none;
     }
 
     .mobile-top-nav {
@@ -1916,7 +1933,28 @@ button#floatingBurger {
     img.footer-frame.img-fluid {
         display: none;
     }
+
+    /* Show mobile close button inside the nav panel when it's active */
+    .mobile-nav-wrapper.active .mobile-close {
+        display: inline-flex;
+        position: fixed;
+        top: 18px;
+        right: 18px;
+        width: 44px;
+        height: 44px;
+        border-radius: 8px;
+        background: #fff;
+        color: #111;
+        border: none;
+        font-size: 26px;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        z-index: 1100;
+        cursor: pointer;
+    }
 }
+
 
 
 @media (max-width: 768px) {

@@ -15,10 +15,24 @@ document.addEventListener('DOMContentLoaded', function() {
         fb.innerHTML = '<span></span><span></span><span></span>';
         document.body.appendChild(fb);
             fb.addEventListener('click', function() {
+                // On mobile keep previous behaviour: scroll to top
+                if (window.innerWidth <= 1020) {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    return;
+                }
+
                 const existing = document.querySelector('.offscreen-menu');
                 if (existing) closeOffscreen();
                 else openOffscreen();
             });
+
+        // Close the offscreen menu if the viewport is resized to mobile
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 1020) {
+                const existing = document.querySelector('.offscreen-menu');
+                if (existing) closeOffscreen();
+            }
+        });
         }
     
         function closeOffscreen() {
@@ -164,6 +178,38 @@ document.addEventListener('DOMContentLoaded', function() {
                     fbBtn.setAttribute('aria-label', 'Open menu');
                 }
             });
+        });
+
+        // Add a visible close button inside the mobile panel for users who want an explicit control
+        if (!mobileNavWrapper.querySelector('.mobile-close')) {
+            const mobileClose = document.createElement('button');
+            mobileClose.className = 'mobile-close';
+            mobileClose.setAttribute('aria-label', 'Close menu');
+            mobileClose.innerHTML = '&times;';
+            mobileNavWrapper.appendChild(mobileClose);
+            mobileClose.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                mobileNavWrapper.classList.remove('active');
+                document.body.style.overflow = '';
+                const fbBtn = document.getElementById('floatingBurger');
+                if (fbBtn) {
+                    fbBtn.classList.remove('active');
+                    fbBtn.setAttribute('aria-label', 'Open menu');
+                }
+            });
+        }
+
+        // Close menus with Escape key (both mobile and offscreen)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                if (mobileNavWrapper.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    mobileNavWrapper.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+                const existingOff = document.querySelector('.offscreen-menu');
+                if (existingOff) closeOffscreen();
+            }
         });
     }
 });
