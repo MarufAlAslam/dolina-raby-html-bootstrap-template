@@ -4,19 +4,130 @@
 document.addEventListener('DOMContentLoaded', function() {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNavWrapper = document.querySelector('.mobile-nav-wrapper');
-
-    // Create floating burger button (hidden by default) that scrolls to top
+    let fb = document.getElementById('floatingBurger');
+    
+    // Create floating burger button (hidden by default) that toggles offscreen mobile menu
     if (!document.getElementById('floatingBurger')) {
-        const fb = document.createElement('button');
+        fb = document.createElement('button');
         fb.id = 'floatingBurger';
         fb.type = 'button';
-        fb.setAttribute('aria-label', 'Scroll to top');
+        fb.setAttribute('aria-label', 'Open menu');
         fb.innerHTML = '<span></span><span></span><span></span>';
         document.body.appendChild(fb);
-        fb.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
+            fb.addEventListener('click', function() {
+                const existing = document.querySelector('.offscreen-menu');
+                if (existing) closeOffscreen();
+                else openOffscreen();
+            });
+        }
+    
+        function closeOffscreen() {
+            const existing = document.querySelector('.offscreen-menu');
+            if (existing) existing.remove();
+            fb.classList.remove('active');
+            document.body.style.overflow = '';
+            fb.setAttribute('aria-label', 'Open menu');
+        }
+    
+        function openOffscreen() {
+            // Build offscreen DOM only once per open
+            const off = document.createElement('div');
+            off.className = 'offscreen-menu';
+        
+            // overlay area (clicking outside left panel closes)
+            const overlay = document.createElement('div');
+            overlay.className = 'offscreen-overlay';
+            off.appendChild(overlay);
+        
+            // left content panel
+            const panel = document.createElement('div');
+            panel.className = 'offscreen-panel';
+        
+            // close button
+            const closeBtn = document.createElement('button');
+            closeBtn.className = 'offscreen-close';
+            closeBtn.setAttribute('aria-label', 'Close menu');
+            closeBtn.innerHTML = '&times;';
+            panel.appendChild(closeBtn);
+        
+            // nav links (custom — intentionally different from main nav)
+            const ul = document.createElement('ul');
+            ul.className = 'offscreen-links';
+            const links = [
+                ['O nas', '#about-section'],
+                ['Dlaczego Dolina Raby?', '#about-section'],
+                ['Atrakcje', '#attractions-section'],
+                ['Wędkowanie Dolina', '#fishing-feature-section'],
+                ['Pytania i odpowiedzi', '#faq-section'],
+                ['Dojazd', '#maps-section']
+            ];
+            links.forEach(([text, href]) => {
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                a.href = href;
+                a.textContent = text;
+                a.addEventListener('click', function(e) {
+                    // close after navigating
+                    closeOffscreen();
+                });
+                li.appendChild(a);
+                ul.appendChild(li);
+            });
+            panel.appendChild(ul);
+        
+            // social + contact block
+            const contact = document.createElement('div');
+            contact.className = 'offscreen-contact';
+            contact.innerHTML = `
+                <hr class="offscreen-sep">
+                <div class="offscreen-social">
+                    <div class="social-icon">❤</div>
+                    <div class="social-links">
+                        <a href="#">Facebook</a>
+                        <a href="#">Instagram</a>
+                    </div>
+                </div>
+
+                <hr class="offscreen-sep">
+
+                <div class="offscreen-phones">
+                    <div class="phone-row">
+                        <img src="img/footer-phone.png" alt="Phone" class="off-icon">
+                        <div class="phone-lines">
+                            <a href="tel:+48789230680" class="phone-number">+48 789 230 680</a>
+                            <a href="mailto:doraby@wodociagikklaj.pl" class="phone-email">doraby@wodociagikklaj.pl</a>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class="offscreen-sep">
+
+                <div class="offscreen-address">32-015 Klaj 1006</div>
+                <div class="offscreen-map-link"><a href="https://maps.app.goo.gl/QRdBmG4m7VYcXW7z7" target="_blank" rel="noopener noreferrer">Nawiguj z Google Maps</a></div>
+            `;
+            panel.appendChild(contact);
+        
+            // small footer/logo
+            const logoWrap = document.createElement('div');
+            logoWrap.className = 'offscreen-logo';
+            const logoImg = document.createElement('img');
+            logoImg.src = 'img/logo.svg';
+            logoImg.alt = 'Footer Logo';
+            logoImg.className = 'offscreen-logo-img img-fluid';
+            logoWrap.appendChild(logoImg);
+            panel.appendChild(logoWrap);
+        
+            off.appendChild(panel);
+        
+            // attach handlers
+            overlay.addEventListener('click', closeOffscreen);
+            closeBtn.addEventListener('click', closeOffscreen);
+        
+            document.body.appendChild(off);
+            fb.classList.add('active');
+            fb.setAttribute('aria-label', 'Close menu');
+            document.body.style.overflow = 'hidden';
+        }
 
     if (hamburgerMenu && mobileNavWrapper) {
         hamburgerMenu.addEventListener('click', function() {
@@ -25,6 +136,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Prevent body scroll when menu is open
             document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+
+            // Ensure offscreen menu is closed when main hamburger toggles the main mobile nav
+            const existingOff = document.querySelector('.offscreen-menu');
+            if (existingOff) {
+                existingOff.remove();
+                const fbBtn = document.getElementById('floatingBurger');
+                if (fbBtn) {
+                    fbBtn.classList.remove('active');
+                    fbBtn.setAttribute('aria-label', 'Open menu');
+                }
+                document.body.style.overflow = '';
+            }
         });
 
         // Close menu when clicking on a link
@@ -34,6 +157,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 hamburgerMenu.classList.remove('active');
                 mobileNavWrapper.classList.remove('active');
                 document.body.style.overflow = '';
+
+                const fbBtn = document.getElementById('floatingBurger');
+                if (fbBtn) {
+                    fbBtn.classList.remove('active');
+                    fbBtn.setAttribute('aria-label', 'Open menu');
+                }
             });
         });
     }
@@ -60,7 +189,17 @@ window.addEventListener('scroll', function() {
             const navRect = navWrap.getBoundingClientRect();
             // if nav bottom is above the viewport, show button
             if (navRect.bottom <= 0) fbBtn.style.display = 'flex';
-            else fbBtn.style.display = 'none';
+            else {
+                fbBtn.style.display = 'none';
+                // If the nav became visible, ensure the offscreen menu is closed
+                const existingOff = document.querySelector('.offscreen-menu');
+                if (existingOff) {
+                    existingOff.remove();
+                    fbBtn.classList.remove('active');
+                    fbBtn.setAttribute('aria-label', 'Open menu');
+                    document.body.style.overflow = '';
+                }
+            }
         }
     } catch (e) {
         // ignore
