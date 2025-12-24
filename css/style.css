@@ -467,32 +467,9 @@ html {
     top: 0;
     left: 0;
     z-index: -1;
-    transition: background-position 1s ease-out, transform 1.2s ease-out;
-    /* transform-origin: top left; */
-}
-
-#hero-bg.stage-2 {
-    background-position: 15% 15%;
-    transform: scale(1.5);
-    transform-origin: top left;
-}
-
-#hero-bg.stage-3 {
-    background-position: 15% 15%;
-    transform: scale(1.5);
-    transform-origin: top left;
-}
-
-#hero-bg.stage-4 {
-    background-position: 100% 100%;
-    transform: scale(1.4);
-    transform-origin: bottom right;
-}
-
-#hero-bg.stage-5 {
-    background-position: 100% 100%;
-    transform: scale(1.4);
-    transform-origin: bottom right;
+    /* Let JS drive the transform/background-position to avoid abrupt jumps between stages */
+    transition: none;
+    transform-origin: center center;
 }
 
 #hero-bg.scroll-complete {
@@ -502,7 +479,8 @@ html {
 
 /* Hero Banner */
 #hero {
-    height: 300vh;
+    /* Increased to give Stage 5 more scroll space so the umbrella card remains readable */
+    height: 350vh;
     position: relative;
 }
 
@@ -549,7 +527,8 @@ html {
     opacity: 0;
     z-index: 5;
     transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    /* Longer transition so the umbrella card settles and is more readable */
+    transition: opacity 0.9s ease-out, transform 0.9s ease-out;
 }
 
 .umbrella-content.visible {

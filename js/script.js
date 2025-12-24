@@ -340,7 +340,7 @@ window.addEventListener('scroll', function() {
     const stage3End = windowHeight * 1.5;   // infrastructure enters and stays
     const stage4End = windowHeight * 2.0;   // infra vanishes, image zooms to right-bottom
     const stage5End = windowHeight * 2.5;   // umbrella appears and stays
-    const scrollCompleteAt = windowHeight * 3.0;
+    const scrollCompleteAt = windowHeight * 3.5; // extended so Stage 5 has more time (was 3.0)
 
     // Clear transient inline styles when not needed
     function clearHeroBgTransforms() {
@@ -391,7 +391,8 @@ window.addEventListener('scroll', function() {
         if (heroBottomLeft) heroBottomLeft.style.opacity = 0;
         if (heroBottomRight) heroBottomRight.style.opacity = 0;
 
-        const t = (scrollPosition - stage1End) / (stage2End - stage1End); // 0..1
+        const tRaw = (scrollPosition - stage1End) / (stage2End - stage1End); // 0..1
+        const t = easeOutCubic(tRaw);
         // scale from 1 -> 1.35
         const scale = 1 + t * 0.35;
         // background position from center (50% 50%) -> left-top (0% 0%)
@@ -411,6 +412,9 @@ window.addEventListener('scroll', function() {
 
         return;
     }
+
+    // Helpful easing function for smoother transitions
+    function easeOutCubic(x) { return 1 - Math.pow(1 - Math.min(Math.max(x, 0), 1), 3); }
 
     // STAGE 3: infrastructure card enters and stays for the whole stage3
     if (scrollPosition >= stage2End && scrollPosition < stage3End) {
@@ -442,7 +446,8 @@ window.addEventListener('scroll', function() {
     // STAGE 4: infra vanishes; image zooms to right-bottom based on scroll
     if (scrollPosition >= stage3End && scrollPosition < stage4End) {
         // hide infrastructure gradually based on progress
-        const t = (scrollPosition - stage3End) / (stage4End - stage3End); // 0..1
+        const tRaw = (scrollPosition - stage3End) / (stage4End - stage3End); // 0..1
+        const t = easeOutCubic(tRaw);
         if (infrastructureContent) {
             infrastructureContent.style.opacity = `${1 - t}`;
             infrastructureContent.style.transform = `translateY(${t * -20}px)`;
