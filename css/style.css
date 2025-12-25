@@ -2182,8 +2182,110 @@ button.mobile-close {
 }
 
 
+div#custom-mobile-header {
+    display: none;
+}
+
+
 
 @media (max-width: 768px) {
+    div#custom-mobile-header {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 99999999999999;
+        background: rgba(255, 255, 255, 0.8);
+        width: 100%;
+        min-height: 50px;
+        padding: 10px;
+        box-shadow: 0 0 5px black;
+        backdrop-filter: blur(20px);
+    }
+
+    .mobile-nav-wrapper {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 80px 30px 30px;
+        transition: left 0.3s ease;
+        z-index: 9999999999999999;
+        overflow-y: auto;
+        order: 2;
+        display: block;
+    }
+
+    .mobile-nav-wrapper.active {
+        left: 0;
+        background: rgba(0, 0, 0, 0.95);
+        padding: 80px 30px 30px;
+        z-index: 999999999999999;
+    }
+
+    #custom-mobile-menu a.home-icon.ms-0,
+    #custom-mobile-menu .main-nav-right .accessibility-icon {
+        display: none;
+    }
+
+    #custom-mobile-menu .main-nav-left.d-flex.align-items-center,
+    #custom-mobile-menu .main-nav-right.d-flex.align-items-center {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        text-align: left;
+        width: 100%;
+        gap: 12px;
+        font-size: 20px;
+        text-decoration: none;
+        margin-bottom: 12px;
+    }
+
+    #custom-mobile-menu .mobile-top-nav {
+        gap: 25px;
+    }
+
+    #custom-mobile-menu button.mobile-close {
+        color: black;
+    }
+
+    button#custom-menu-close {
+        background: white;
+        border: unset;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: black;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    #custom-mobile-menu a {
+        text-decoration: none;
+    }
+
+    #custom-mobile-menu * {
+        color: white;
+    }
+
+    div#custom-mobile-header.visible {
+        display: block;
+    }
+
+    img.mobile-logo-img {
+        height: 70px;
+    }
+
+    button#mobile-menu-button {
+        font-size: 28px;
+    }
+
     .footer-copyright {
         font-size: 14px;
         color: #000;

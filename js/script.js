@@ -1,11 +1,11 @@
 // Custom JavaScript goes here
 
 // Hamburger Menu Toggle
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const hamburgerMenu = document.getElementById('hamburgerMenu');
     const mobileNavWrapper = document.querySelector('.mobile-nav-wrapper');
     let fb = document.getElementById('floatingBurger');
-    
+
     // Create floating burger button (hidden by default) that toggles offscreen mobile menu
     if (!document.getElementById('floatingBurger')) {
         fb = document.createElement('button');
@@ -14,85 +14,143 @@ document.addEventListener('DOMContentLoaded', function() {
         fb.setAttribute('aria-label', 'Open menu');
         fb.innerHTML = '<span></span><span></span><span></span>';
         document.body.appendChild(fb);
-            fb.addEventListener('click', function() {
-                // On mobile keep previous behaviour: scroll to top
-                if (window.innerWidth <= 1020) {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                }
+        fb.addEventListener('click', function () {
+            // On mobile keep previous behaviour: scroll to top
+            if (window.innerWidth <= 1020) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                return;
+            }
 
-                const existing = document.querySelector('.offscreen-menu');
-                if (existing) closeOffscreen();
-                else openOffscreen();
-            });
+            const existing = document.querySelector('.offscreen-menu');
+            if (existing) closeOffscreen();
+            else openOffscreen();
+        });
+
+        // --- custom mobile menu close handling ---
+        const customMenu = document.getElementById('custom-mobile-menu');
+        if (customMenu) {
+            // Close button inside custom menu (if present)
+            const customClose = customMenu.querySelector('.mobile-close');
+            if (customClose) {
+                customClose.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // preserve current scroll position (in case unlockBodyScroll would restore wrong value)
+                    const currY = window.scrollY || window.pageYOffset || 0;
+                    if (typeof _scrollY !== 'undefined') _scrollY = currY;
+
+                    // remove active state and cleanup
+                    customMenu.classList.remove('active');
+                    if (hamburgerMenu) hamburgerMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                    document.body.classList.remove('mobile-nav-open');
+                    unlockBodyScroll();
+
+                    // ensure page stays at the preserved position
+                    window.scrollTo(0, currY);
+
+                    const fbBtn = document.getElementById('floatingBurger');
+                    if (fbBtn) {
+                        fbBtn.classList.remove('active');
+                        fbBtn.setAttribute('aria-label', 'Open menu');
+                    }
+                });
+            }
+
+            // Close custom menu when any link inside it is clicked
+            const customLinks = customMenu.querySelectorAll('a');
+            if (customLinks.length) {
+                customLinks.forEach(link => {
+                    link.addEventListener('click', function (e) {
+                        // prevent '#' links from jumping to top
+                        if (this.getAttribute('href') === '#') e.preventDefault();
+                        const currY = window.scrollY || window.pageYOffset || 0;
+                        if (typeof _scrollY !== 'undefined') _scrollY = currY;
+
+                        customMenu.classList.remove('active');
+                        if (hamburgerMenu) hamburgerMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                        document.body.classList.remove('mobile-nav-open');
+                        unlockBodyScroll();
+
+                        window.scrollTo(0, currY);
+
+                        const fbBtn = document.getElementById('floatingBurger');
+                        if (fbBtn) {
+                            fbBtn.classList.remove('active');
+                            fbBtn.setAttribute('aria-label', 'Open menu');
+                        }
+                    });
+                });
+            }
+        }
 
         // Close the offscreen menu if the viewport is resized to mobile
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth <= 1020) {
                 const existing = document.querySelector('.offscreen-menu');
                 if (existing) closeOffscreen();
             }
         });
-        }
-    
-        function closeOffscreen() {
-            const existing = document.querySelector('.offscreen-menu');
-            if (existing) existing.remove();
-            fb.classList.remove('active');
-            document.body.style.overflow = '';
-            fb.setAttribute('aria-label', 'Open menu');
-        }
-    
-        function openOffscreen() {
-            // Build offscreen DOM only once per open
-            const off = document.createElement('div');
-            off.className = 'offscreen-menu';
-        
-            // overlay area (clicking outside left panel closes)
-            const overlay = document.createElement('div');
-            overlay.className = 'offscreen-overlay';
-            off.appendChild(overlay);
-        
-            // left content panel
-            const panel = document.createElement('div');
-            panel.className = 'offscreen-panel';
-        
-            // close button
-            const closeBtn = document.createElement('button');
-            closeBtn.className = 'offscreen-close';
-            closeBtn.setAttribute('aria-label', 'Close menu');
-            closeBtn.innerHTML = '&times;';
-            panel.appendChild(closeBtn);
-        
-            // nav links (custom — intentionally different from main nav)
-            const ul = document.createElement('ul');
-            ul.className = 'offscreen-links';
-            const links = [
-                ['O nas', '#about-section'],
-                ['Dlaczego Dolina Raby?', '#about-section'],
-                ['Atrakcje', '#attractions-section'],
-                ['Wędkowanie Dolina', '#fishing-feature-section'],
-                ['Pytania i odpowiedzi', '#faq-section'],
-                ['Dojazd', '#maps-section']
-            ];
-            links.forEach(([text, href]) => {
-                const li = document.createElement('li');
-                const a = document.createElement('a');
-                a.href = href;
-                a.textContent = text;
-                a.addEventListener('click', function(e) {
-                    // close after navigating
-                    closeOffscreen();
-                });
-                li.appendChild(a);
-                ul.appendChild(li);
+    }
+
+    function closeOffscreen() {
+        const existing = document.querySelector('.offscreen-menu');
+        if (existing) existing.remove();
+        fb.classList.remove('active');
+        document.body.style.overflow = '';
+        fb.setAttribute('aria-label', 'Open menu');
+    }
+
+    function openOffscreen() {
+        // Build offscreen DOM only once per open
+        const off = document.createElement('div');
+        off.className = 'offscreen-menu';
+
+        // overlay area (clicking outside left panel closes)
+        const overlay = document.createElement('div');
+        overlay.className = 'offscreen-overlay';
+        off.appendChild(overlay);
+
+        // left content panel
+        const panel = document.createElement('div');
+        panel.className = 'offscreen-panel';
+
+        // close button
+        const closeBtn = document.createElement('button');
+        closeBtn.className = 'offscreen-close';
+        closeBtn.setAttribute('aria-label', 'Close menu');
+        closeBtn.innerHTML = '&times;';
+        panel.appendChild(closeBtn);
+
+        // nav links (custom — intentionally different from main nav)
+        const ul = document.createElement('ul');
+        ul.className = 'offscreen-links';
+        const links = [
+            ['O nas', '#about-section'],
+            ['Dlaczego Dolina Raby?', '#about-section'],
+            ['Atrakcje', '#attractions-section'],
+            ['Wędkowanie Dolina', '#fishing-feature-section'],
+            ['Pytania i odpowiedzi', '#faq-section'],
+            ['Dojazd', '#maps-section']
+        ];
+        links.forEach(([text, href]) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = href;
+            a.textContent = text;
+            a.addEventListener('click', function (e) {
+                // close after navigating
+                closeOffscreen();
             });
-            panel.appendChild(ul);
-        
-            // social + contact block
-            const contact = document.createElement('div');
-            contact.className = 'offscreen-contact';
-            contact.innerHTML = `
+            li.appendChild(a);
+            ul.appendChild(li);
+        });
+        panel.appendChild(ul);
+
+        // social + contact block
+        const contact = document.createElement('div');
+        contact.className = 'offscreen-contact';
+        contact.innerHTML = `
                 <hr class="offscreen-sep">
                 <div class="offscreen-social">
                     <div class="social-icon" aria-hidden="true">❤</div>
@@ -119,52 +177,52 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="offscreen-address">32-015 Klaj 1006</div>
                 <div class="offscreen-map-link"><a href="https://maps.app.goo.gl/QRdBmG4m7VYcXW7z7" target="_blank" rel="noopener noreferrer">Nawiguj z Google Maps</a></div>
             `;
-            panel.appendChild(contact);
-        
-            // small footer/logo
-            const logoWrap = document.createElement('div');
-            logoWrap.className = 'offscreen-logo';
-            const logoImg = document.createElement('img');
-            logoImg.src = 'img/logo.svg';
-            logoImg.alt = 'Footer Logo';
-            logoImg.className = 'offscreen-logo-img img-fluid';
-            logoWrap.appendChild(logoImg);
-            panel.appendChild(logoWrap);
-        
-            off.appendChild(panel);
-        
-            // attach handlers
-            overlay.addEventListener('click', closeOffscreen);
-            closeBtn.addEventListener('click', closeOffscreen);
-        
-            document.body.appendChild(off);
-            fb.classList.add('active');
-            fb.setAttribute('aria-label', 'Close menu');
-            document.body.style.overflow = 'hidden';
-        }
+        panel.appendChild(contact);
 
-        // Scroll lock for mobile nav: save scroll position, fix body, and restore on close
-        let _scrollY = 0;
-        function lockBodyScroll() {
-            _scrollY = window.scrollY || window.pageYOffset;
-            document.body.style.position = 'fixed';
-            document.body.style.top = `-${_scrollY}px`;
-            document.body.style.left = '0';
-            document.body.style.right = '0';
-            document.body.style.width = '100%';
-        }
-        function unlockBodyScroll() {
-            document.body.style.position = '';
-            document.body.style.top = '';
-            document.body.style.left = '';
-            document.body.style.right = '';
-            document.body.style.width = '';
-            window.scrollTo(0, _scrollY || 0);
-            _scrollY = 0;
-        }
+        // small footer/logo
+        const logoWrap = document.createElement('div');
+        logoWrap.className = 'offscreen-logo';
+        const logoImg = document.createElement('img');
+        logoImg.src = 'img/logo.svg';
+        logoImg.alt = 'Footer Logo';
+        logoImg.className = 'offscreen-logo-img img-fluid';
+        logoWrap.appendChild(logoImg);
+        panel.appendChild(logoWrap);
+
+        off.appendChild(panel);
+
+        // attach handlers
+        overlay.addEventListener('click', closeOffscreen);
+        closeBtn.addEventListener('click', closeOffscreen);
+
+        document.body.appendChild(off);
+        fb.classList.add('active');
+        fb.setAttribute('aria-label', 'Close menu');
+        document.body.style.overflow = 'hidden';
+    }
+
+    // Scroll lock for mobile nav: save scroll position, fix body, and restore on close
+    let _scrollY = 0;
+    function lockBodyScroll() {
+        _scrollY = window.scrollY || window.pageYOffset;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${_scrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+    }
+    function unlockBodyScroll() {
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo(0, _scrollY || 0);
+        _scrollY = 0;
+    }
 
     if (hamburgerMenu && mobileNavWrapper) {
-        hamburgerMenu.addEventListener('click', function() {
+        hamburgerMenu.addEventListener('click', function () {
             this.classList.toggle('active');
             mobileNavWrapper.classList.toggle('active');
 
@@ -197,7 +255,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Close menu when clicking on a link
         const menuLinks = mobileNavWrapper.querySelectorAll('a');
         menuLinks.forEach(link => {
-            link.addEventListener('click', function() {
+            link.addEventListener('click', function () {
                 hamburgerMenu.classList.remove('active');
                 mobileNavWrapper.classList.remove('active');
                 document.body.style.overflow = '';
@@ -219,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function() {
             mobileClose.setAttribute('aria-label', 'Close menu');
             mobileClose.innerHTML = '&times;';
             mobileNavWrapper.appendChild(mobileClose);
-            mobileClose.addEventListener('click', function() {
+            mobileClose.addEventListener('click', function () {
                 hamburgerMenu.classList.remove('active');
                 mobileNavWrapper.classList.remove('active');
                 document.body.style.overflow = '';
@@ -234,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Close menus with Escape key (both mobile and offscreen)
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' || e.key === 'Esc') {
                 if (mobileNavWrapper.classList.contains('active')) {
                     hamburgerMenu.classList.remove('active');
@@ -249,7 +307,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         // Ensure we clean up scroll lock if viewport crosses breakpoint
-        window.addEventListener('resize', function() {
+        window.addEventListener('resize', function () {
             if (window.innerWidth > 1020) {
                 document.body.classList.remove('mobile-nav-open');
                 unlockBodyScroll();
@@ -285,7 +343,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const attractionIcons = document.querySelectorAll('.attraction-modal-icon');
         if (attractionIcons.length) {
             attractionIcons.forEach(icon => {
-                icon.addEventListener('click', function(e) {
+                icon.addEventListener('click', function (e) {
                     const targetSelector = this.getAttribute('data-target');
                     const attractionId = this.getAttribute('data-attraction');
                     const currentModalEl = this.closest('.modal');
@@ -330,7 +388,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 // Support keyboard activation
-                icon.addEventListener('keydown', function(e) {
+                icon.addEventListener('keydown', function (e) {
                     if (e.key === 'Enter' || e.key === ' ') {
                         e.preventDefault();
                         this.click();
@@ -342,7 +400,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Smooth background transition on scroll with stages (scroll-driven interpolation per stage)
-window.addEventListener('scroll', function() {
+window.addEventListener('scroll', function () {
     const heroBg = document.getElementById('hero-bg');
     const heroSection = document.getElementById('hero');
     const heroContent = document.querySelector('.hero-content');
@@ -358,6 +416,7 @@ window.addEventListener('scroll', function() {
     try {
         const navWrap = document.querySelector('.nav-wrapper');
         const fbBtn = document.getElementById('floatingBurger');
+        const customHeader = document.getElementById('custom-mobile-header');
         if (navWrap && fbBtn) {
             const navRect = navWrap.getBoundingClientRect();
             // if nav bottom is above the viewport, show button
@@ -371,6 +430,18 @@ window.addEventListener('scroll', function() {
                     fbBtn.classList.remove('active');
                     fbBtn.setAttribute('aria-label', 'Open menu');
                     document.body.style.overflow = '';
+                }
+            }
+            // Show custom mobile header when nav is out of view on small screens
+            if (customHeader) {
+                if (window.innerWidth <= 768) {
+                    if (navRect.bottom <= 0) {
+                        customHeader.classList.add('visible');
+                    } else {
+                        customHeader.classList.remove('visible');
+                    }
+                } else {
+                    customHeader.classList.remove('visible');
                 }
             }
         }
@@ -573,10 +644,10 @@ window.addEventListener('scroll', function() {
 //     });
 
 // Nav: trigger hero Stage 3 when clicking 'O nas'
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navOnas = document.getElementById('navOnas');
     if (navOnas) {
-        navOnas.addEventListener('click', function(e) {
+        navOnas.addEventListener('click', function (e) {
             e.preventDefault();
             const target = window.innerHeight * 1.1; // inside stage 3 (between 1.0 and 1.5 * windowHeight)
             window.scrollTo({ top: target, behavior: 'smooth' });
@@ -587,7 +658,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const stage3Links = document.querySelectorAll('.scroll-stage-3');
     if (stage3Links && stage3Links.length) {
         stage3Links.forEach(link => {
-            link.addEventListener('click', function(e) {
+            link.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = window.innerHeight * 1.1;
                 window.scrollTo({ top: target, behavior: 'smooth' });
@@ -598,7 +669,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hero green CTA should open hero Stage 3 as well
     const heroCta = document.querySelector('.hero-content .btn-discover');
     if (heroCta) {
-        heroCta.addEventListener('click', function(e) {
+        heroCta.addEventListener('click', function (e) {
             e.preventDefault();
             const target = window.innerHeight * 1.1;
             window.scrollTo({ top: target, behavior: 'smooth' });
@@ -607,7 +678,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Initialize AOS if available
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     if (window.AOS && typeof AOS.init === 'function') {
         AOS.init({
             once: true,
@@ -619,7 +690,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Also initialize/refresh AOS on full window load to ensure assets are ready
-window.addEventListener('load', function() {
+window.addEventListener('load', function () {
     if (window.AOS && typeof AOS.init === 'function') {
         try {
             AOS.init({
@@ -637,5 +708,33 @@ window.addEventListener('load', function() {
     } else {
         // eslint-disable-next-line no-console
         console.info('AOS not found on window - check script include.');
+    }
+});
+
+
+// mobile-menu-button to toggle custom-mobile-menu active class
+document.addEventListener('DOMContentLoaded', function () {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const customMobileMenu = document.getElementById('custom-mobile-menu');
+    const customClose = document.getElementById('custom-menu-close');
+
+    if (mobileMenuButton && customMobileMenu) {
+        mobileMenuButton.addEventListener('click', function () {
+            customMobileMenu.classList.toggle('active');
+
+            // turn off page scrolling
+            if (customMobileMenu.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        if (customClose) {
+            customClose.addEventListener('click', function (e) {
+                e.preventDefault();
+                customMobileMenu.classList.remove('active');
+            });
+        }
     }
 });
