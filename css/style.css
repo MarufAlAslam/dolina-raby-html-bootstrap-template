@@ -769,6 +769,10 @@ html {
     font-weight: 700;
 }
 
+div#fishingModal {
+    z-index: 999999999999;
+}
+
 /* Feature buttons (interactive icons) */
 .feature-btn {
     -webkit-appearance: none;
