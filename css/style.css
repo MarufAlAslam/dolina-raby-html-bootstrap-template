@@ -2195,13 +2195,34 @@ div#custom-mobile-header {
         top: 0;
         left: 0;
         z-index: 99999999999999;
-        background: transparent;
+        background: rgba(255, 255, 255, 0.4);
         width: 100%;
         min-height: 50px;
         padding: 10px;
         /* box-shadow: 0 0 11px rgba(0,0,0,0.4); */
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .attraction-modal .modal-inner {
+        margin: 0;
+        padding: 40px 48px 32px 48px;
+        border-radius: 20px !important;
+        box-shadow: unset;
+        position: relative;
+        background: #fff;
+    }
+
+    .attraction-modal .modal-hero-img {
+        height: 150px;
+        object-fit: cover;
+        object-position: center 30%;
+        border-radius: 0;
+    }
+
+    .modal-content {
+        max-height: 500px;
+        overflow-y: scroll !important;
     }
 
     .mobile-nav-wrapper {
