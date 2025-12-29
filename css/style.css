@@ -547,6 +547,15 @@ html {
     top: 0;
 }
 
+#hero-bg.stage-2,
+#hero-bg.stage-3 {
+    transform-origin: left top !important;
+}
+#hero-bg.stage-4,
+#hero-bg.stage-5 {
+    transform-origin: right bottom !important;
+}
+
 /* Hero Banner */
 #hero {
     /* Increased to give Stage 5 more scroll space so the umbrella card remains readable */
@@ -2195,13 +2204,17 @@ div#custom-mobile-header {
         top: 0;
         left: 0;
         z-index: 99999999999999;
-        background: rgba(255, 255, 255, 0.4);
+        background: black;
         width: 100%;
         min-height: 50px;
         padding: 10px;
         /* box-shadow: 0 0 11px rgba(0,0,0,0.4); */
         backdrop-filter: blur(20px);
         border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    button#mobile-menu-button {
+        color: white;
     }
 
     .attraction-modal .modal-inner {
@@ -2301,7 +2314,7 @@ div#custom-mobile-header {
     }
 
     img.mobile-logo-img {
-        height: 70px;
+        height: 45px;
     }
 
     button#mobile-menu-button {
