@@ -411,6 +411,11 @@ window.addEventListener('scroll', function () {
 
     const scrollPosition = window.scrollY;
     const windowHeight = window.innerHeight;
+    
+    // Detect panoramic/ultra-wide screens and adjust scale factors
+    const aspectRatio = window.innerWidth / window.innerHeight;
+    const isPanoramic = aspectRatio > 2.33; // wider than 21:9
+    const scaleMultiplier = isPanoramic ? Math.min(aspectRatio / 1.78, 2.5) : 1; // scale up based on aspect ratio, max 2.5x
 
     // Show floating burger when nav is out of view
     try {
@@ -508,11 +513,12 @@ window.addEventListener('scroll', function () {
 
         const tRaw = (scrollPosition - stage1End) / (stage2End - stage1End); // 0..1
         const t = easeOutCubic(tRaw);
-        // scale from 1 -> 1.35
-        const scale = 1 + t * 0.35;
-        // background position from center (50% 50%) -> left-top (0% 0%)
-        const posX = 50 - (50 * t); // 50 -> 0
-        const posY = 50 - (50 * t); // 50 -> 0
+        // scale from 1 -> 1.35 (adjusted for panoramic screens)
+        const baseScale = 1 + t * 0.35;
+        const scale = baseScale * scaleMultiplier;
+        // background position from center (50% 50%) -> top-left (0% 0%)
+        const posX = 50 - (50 * t); // 50 -> 0 (move to left)
+        const posY = 50 - (50 * t); // 50 -> 0 (move to top)
 
         if (heroBg) {
             heroBg.style.transform = `scale(${scale})`;
@@ -538,9 +544,10 @@ window.addEventListener('scroll', function () {
 
         // keep heroBg in its stage-3 look (end of previous zoom)
         if (heroBg) {
-            // set to the end-state of stage2 (right-top, scale ~1.35)
-            heroBg.style.transform = `scale(1.35)`;
-            heroBg.style.backgroundPosition = `0% 0%`;
+            // set to the end-state of stage2 (top-left, scale ~1.35, adjusted for panoramic)
+            const stage3Scale = 1.35 * scaleMultiplier;
+            heroBg.style.transform = `scale(${stage3Scale})`;
+            heroBg.style.backgroundPosition = `0% 0%`; // stay at top-left
             heroBg.classList.add('stage-3');
             heroBg.classList.remove('stage-2', 'stage-4', 'stage-5', 'scroll-complete');
         }
@@ -569,10 +576,11 @@ window.addEventListener('scroll', function () {
             if (t >= 1) clearVisibility(infrastructureContent);
         }
 
-        // heroBg transition from left-top -> right-bottom, scale from 1.35 -> 1.6
-        const posX = t * 100; // 0 -> 100
-        const posY = t * 100; // 0 -> 100
-        const scale = 1.35 + t * 0.25; // 1.35 -> 1.6
+        // heroBg transition from top-left (0% 0%) -> bottom-right (100% 100%), scale from 1.35 -> 1.6 (adjusted for panoramic)
+        const posX = 0 + (t * 100); // 0 -> 100 (move to right)
+        const posY = 0 + (t * 100); // 0 -> 100 (move to bottom)
+        const baseScale = 1.35 + t * 0.25; // 1.35 -> 1.6
+        const scale = baseScale * scaleMultiplier;
         if (heroBg) {
             heroBg.style.transform = `scale(${scale})`;
             heroBg.style.backgroundPosition = `${posX}% ${posY}%`;
@@ -595,10 +603,11 @@ window.addEventListener('scroll', function () {
             infrastructureContent.style.transform = '';
         }
 
-        // keep heroBg in end-of-stage4 state (right-bottom, scaled)
+        // keep heroBg in end-of-stage4 state (bottom-right, scaled, adjusted for panoramic)
         if (heroBg) {
-            heroBg.style.transform = `scale(1.6)`;
-            heroBg.style.backgroundPosition = `100% 100%`;
+            const stage5Scale = 1.6 * scaleMultiplier;
+            heroBg.style.transform = `scale(${stage5Scale})`;
+            heroBg.style.backgroundPosition = `100% 100%`; // stay at bottom-right
             heroBg.classList.add('stage-5');
             heroBg.classList.remove('stage-2', 'stage-3', 'stage-4', 'scroll-complete');
         }

@@ -539,7 +539,13 @@ html {
     z-index: -1;
     /* Let JS drive the transform/background-position to avoid abrupt jumps between stages */
     transition: none;
-    transform-origin: center center;
+    /* transform-origin: center center; */
+    transform-origin: left top;
+}
+
+#hero-bg.stage-4,
+#hero-bg.stage-5 {
+    transform-origin: center center !important;
 }
 
 #hero-bg.scroll-complete {
@@ -547,14 +553,15 @@ html {
     top: 0;
 }
 
-#hero-bg.stage-2,
+
+/* #hero-bg.stage-2,
 #hero-bg.stage-3 {
     transform-origin: left top !important;
 }
 #hero-bg.stage-4,
 #hero-bg.stage-5 {
     transform-origin: right bottom !important;
-}
+} */
 
 /* Hero Banner */
 #hero {
